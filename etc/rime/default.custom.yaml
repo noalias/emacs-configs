@@ -1,0 +1,28 @@
+patch:
+  schema_list:
+    - {schema: double_pinyin_flypy}
+    - {schema: rime_ice}
+
+  menu/page_size: 7
+    
+  ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+      Caps_Lock: commit_code
+      Shift_L: noop
+      Shift_R: inline_ascii
+      Control_L: noop
+      Control_R: noop
+
+  key_binder/bindings/+:
+      - { when: paging, accept: comma, send: Page_Up}
+      - { when: has_menu, accept: period, send: Page_Down}
+      - { when: paging, accept: Alt+v, send: Page_Up}
+      - { when: has_menu, accept: Control+v, send: Page_Down}
+      - { when: composing, accept: Control+f, send: Shift+Right}
+      - { when: composing, accept: Control+b, send: Shift+Left}
+      - { when: composing, accept: Control+n, send: Down}
+      - { when: composing, accept: Control+p, send: Up}
+      - { when: composing, accept: Control+a, send: Home}
+      - { when: composing, accept: Control+e, send: End}
+      - { when: composing, accept: Control+g, send: Escape}
+    

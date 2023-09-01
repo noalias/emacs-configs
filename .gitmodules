@@ -1,0 +1,130 @@
+[submodule "aggressive-completion"]
+	path = lib/aggressive-completion
+	url = https://github.com/emacsmirror/aggressive-completion
+[submodule "aggressive-indent"]
+	path = lib/aggressive-indent
+	url = https://github.com/Malabarba/aggressive-indent-mode
+[submodule "auctex"]
+	path = lib/auctex
+	url = https://github.com/emacsmirror/auctex.git
+[submodule "auctex-latexmk"]
+	path = lib/auctex-latexmk
+	url = https://github.com/tom-tan/auctex-latexmk
+[submodule "avy"]
+	path = lib/avy
+	url = https://github.com/abo-abo/avy
+[submodule "borg"]
+	path = lib/borg
+	url = https://github.com/emacscollective/borg.git
+[submodule "cargo"]
+	path = lib/cargo
+	url = https://github.com/kwrooijen/cargo.el
+[submodule "closql"]
+	path = lib/closql
+	url = https://github.com/emacscollective/closql.git
+[submodule "company"]
+	path = lib/company
+	url = https://github.com/emacsmirror/company
+[submodule "compat"]
+	path = lib/compat
+	url = https://git.sr.ht/~pkal/compat
+[submodule "consult"]
+	path = lib/consult
+	url = https://github.com/emacsmirror/consult
+[submodule "consult-dir"]
+	path = lib/consult-dir
+	url = https://github.com/emacsmirror/consult-dir
+[submodule "dash"]
+	path = lib/dash
+	url = https://github.com/emacsmirror/dash
+[submodule "diredfl"]
+	path = lib/diredfl
+	url = https://github.com/purcell/diredfl
+[submodule "doom-modeline"]
+	path = lib/doom-modeline
+	url = https://github.com/seagle0128/doom-modeline
+[submodule "doom-themes"]
+	path = lib/doom-themes
+	url = https://github.com/doomemacs/themes
+[submodule "edit-indirect"]
+	path = lib/edit-indirect
+	url = https://github.com/Fanael/edit-indirect
+[submodule "elisp-demos"]
+	path = lib/elisp-demos
+	url = https://github.com/xuchunyang/elisp-demos
+[submodule "emacsql"]
+	path = lib/emacsql
+	url = https://github.com/skeeto/emacsql.git
+	no-byte-compile = emacsql-pg.el
+[submodule "epkg"]
+	path = lib/epkg
+	url = https://github.com/emacscollective/epkg.git
+[submodule "etexshow"]
+	path = lib/etexshow
+	url = https://github.com/pgundlach/etexshow
+[submodule "f"]
+	path = lib/f
+	url = https://github.com/rejeep/f.el
+[submodule "llama"]
+	path = lib/llama
+	url = https://git.sr.ht/~tarsius/llama
+[submodule "lua-mode"]
+	path = lib/lua-mode
+	url = https://github.com/immerrr/lua-mode
+[submodule "magit"]
+	path = lib/magit
+	url = https://github.com/emacsmirror/magit
+[submodule "markdown-mode"]
+	path = lib/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode
+[submodule "nerd-icons"]
+	path = lib/nerd-icons
+	url = https://github.com/emacsmirror/nerd-icons
+[submodule "nerd-icons-completion"]
+	path = lib/nerd-icons-completion
+	url = https://github.com/emacsmirror/nerd-icons-completion
+[submodule "nerd-icons-ibuffer"]
+	path = lib/nerd-icons-ibuffer
+	url = https://github.com/seagle0128/nerd-icons-ibuffer
+[submodule "no-littering"]
+	path = lib/no-littering
+	url = https://github.com/emacscollective/no-littering.git
+[submodule "orderless"]
+	path = lib/orderless
+	url = https://github.com/emacsmirror/orderless
+[submodule "popper"]
+	path = lib/popper
+	url = https://github.com/karthink/popper
+[submodule "posframe"]
+	path = lib/posframe
+	url = https://github.com/emacsmirror/posframe
+[submodule "rg"]
+	path = lib/rg
+	url = https://github.com/emacsmirror/rg
+[submodule "rime"]
+	path = lib/rime
+	url = https://github.com/DogLooksGood/emacs-rime
+[submodule "rime-ice"]
+	path = var/rime-ice
+	url = https://github.com/iDvel/rime-ice.git
+[submodule "s"]
+	path = lib/s
+	url = https://github.com/emacsmirror/s
+[submodule "scad-mode"]
+	path = lib/scad-mode
+	url = https://github.com/openscad/emacs-scad-mode
+[submodule "shrink-path"]
+	path = lib/shrink-path
+	url = https://gitlab.com/bennya/shrink-path.el
+[submodule "treesit-auto"]
+	path = lib/treesit-auto
+	url = https://github.com/renzmann/treesit-auto
+[submodule "wgrep"]
+	path = lib/wgrep
+	url = https://github.com/emacsmirror/wgrep
+[submodule "with-editor"]
+	path = lib/with-editor
+	url = https://github.com/emacsmirror/with-editor
+[submodule "yasnippet"]
+	path = lib/yasnippet
+	url = https://github.com/joaotavora/yasnippet
