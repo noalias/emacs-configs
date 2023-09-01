@@ -119,11 +119,13 @@
                                                ""
                                                "7z x -aoa -o%o %i")))
 
-
 (use-package diredfl
   :hook dired-mode-hook
   :config
   (set-face-attribute 'diredfl-dir-name nil :bold t))
+
+(use-package nerd-icons-dired
+  :hook dired-mode-hook)
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
