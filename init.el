@@ -29,7 +29,7 @@
   (setq use-package-verbose t))
 
 (use-package borg
-  :load-path ("lib/borg")
+  :load-path "lib/borg"
   :config
   (borg-initialize))
 
