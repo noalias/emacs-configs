@@ -58,13 +58,7 @@ if that doesn't produce a completion match."
 (use-package aggressive-completion
   :hook after-init-hook
   :custom
-  (aggressive-completion-auto-complete-fn #'completion:minibuffer-complete)
-  :config
-  (defun completion:minibuffer-complete ()
-    (interactive)
-    (let ((completion-auto-select nil)
-          (minibuffer-completion-auto-choose nil))
-      (minibuffer-complete))))
+  (aggressive-completion-delay 0.4))
 
 (use-package orderless
   :custom
