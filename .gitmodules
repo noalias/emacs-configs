@@ -4,6 +4,20 @@
 [submodule "aggressive-indent"]
 	path = lib/aggressive-indent
 	url = https://github.com/Malabarba/aggressive-indent-mode
+[submodule "auctex"]
+	path = lib/auctex
+	url = https://github.com/emacsmirror/auctex
+    load-path = .
+    build-step = ./configure --with-lispdir=. --with-texmf-dir=~/Tex/texmf
+    build-step = ./autogen.sh
+    build-step = make
+    build-step = make doc
+    build-step = borg-maketexi
+    build-step = borg-makeinfo
+    build-step = borg-update-autoloads
+[submodule "auctex-latexmk"]
+	path = lib/auctex-latexmk
+	url = https://github.com/emacsmirror/auctex-latexmk.git
 [submodule "avy"]
 	path = lib/avy
 	url = https://github.com/abo-abo/avy
@@ -25,6 +39,9 @@
 [submodule "consult"]
 	path = lib/consult
 	url = https://github.com/emacsmirror/consult
+[submodule "consult-company"]
+	path = lib/consult-company
+	url = https://github.com/mohkale/consult-company
 [submodule "consult-dir"]
 	path = lib/consult-dir
 	url = https://github.com/emacsmirror/consult-dir
@@ -125,17 +142,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "auctex-latexmk"]
-	path = lib/auctex-latexmk
-	url = https://github.com/emacsmirror/auctex-latexmk.git
-[submodule "auctex"]
-	path = lib/auctex
-	url = https://github.com/emacsmirror/auctex
-    load-path = .
-    build-step = ./configure --with-lispdir=. --with-texmf-dir=~/Tex/texmf
-    build-step = ./autogen.sh
-    build-step = make
-    build-step = make doc
-    build-step = borg-maketexi
-    build-step = borg-makeinfo
-    build-step = borg-update-autoloads
