@@ -173,16 +173,14 @@ if that doesn't produce a completion match."
 (use-package consult-company
   :after (company consult)
   :bind
-  (:map company-active-map
-        ("C-s" . consult-company))
+  (
+   :map company-mode-map
+   ([remap completino-at-point] . consult-company)
+   :map company-active-map
+   ([remap company-search-candidates] . consult-company))
   :config
-  (consult-customize
-   consult-company
-   :initial company-prefix
-   (defun completion:consult-company-frontend (command)
-     (pcase command
-       (`post-command (consult-company)))))
-  )
+  (consult-customize consult-company
+                     :initial company-prefix))
 
 (use-package nerd-icons-completion
   :config
