@@ -112,33 +112,7 @@ if that doesn't produce a completion match."
         consult-async-input-throttle 0.2
         consult-narrow-key "<"
         consult-line-number-widwn t)
-
-  (defun consult--orderless-regexp-compiler (input type &rest _config)
-    (let ((input (orderless-pattern-compiler input)))
-      (cons
-       (mapcar (lambda (r) (consult--convert-regexp r type)) input)
-       (lambda (str) (orderless--highlight input str)))))
-  
-  (defun consult--fd-builder (input)
-    (let ((fd-command
-           (if (eq 0 (process-file-shell-command "fdfind"))
-               "fdfind"
-             "fd")))
-      (pcase-let* ((`(,arg . ,opts) (consult--command-split input))
-                   (`(,re . ,hl) (funcall consult--regexp-compiler arg 'extended t)))
-        (when re
-          (cons (append
-                 (list fd-command
-                       "--color=never" "--full-path"
-                       (consult--join-regexps re 'extended))
-                 opts)
-                hl)))))
-
-  (defun consult-fd (&optional dir initial)
-    (interactive "P")
-    (pcase-let* ((`(,prompt ,paths ,dir) (consult--directory-prompt "Fd" dir))
-                 (default-directory dir))
-      (find-file (consult--find prompt #'consult--fd-builder initial)))))
+  )
 
 (use-package consult-dir
   :bind
