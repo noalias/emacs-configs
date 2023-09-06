@@ -8,7 +8,7 @@
 	path = lib/auctex
 	url = https://github.com/emacsmirror/auctex
     load-path = .
-    build-step = ./configure --with-lispdir=. --with-texmf-dir=~/Tex/texmf
+    build-step = ./configure --with-lispdir=. --without-texmf-dir
     build-step = ./autogen.sh
     build-step = make
     build-step = make doc

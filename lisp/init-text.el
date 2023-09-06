@@ -42,13 +42,44 @@
                 TeX-engine 'xetex)
   ;; Revert the PDF-buffer after the TeX compilation has finished
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-  (TeX-source-correlate-mode))
+  (TeX-source-correlate-mode)
 
-(use-package auctex-latexmk
-  :hook (LaTeX-mode-hook . auctex-latexmk-setup)
-  :config
-  (setq auctex-latexmk-inherit-TeX-PDF-mode t)
-  (setq TeX-command-default "LatexMk"))
+  (add-to-list 'TeX-tree-roots "~/Tex/texmf")
+
+  ;; Config latemk
+  (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)
+  (defun auctex:latexmk-setup ()
+    (setq TeX-command-default "LaTexmk"
+          TeX-command-extra-options (cond
+                                     ((eq TeX-engine 'xetex)"-shell-escape")
+                                     (t ""))
+          LaTeX-clean-intermediate-suffixes
+          (append LaTeX-clean-intermediate-suffixes '("\\.fdb_latexmk" "\\.aux.bak" "\\.fls")))
+    (add-to-list 'TeX-expand-list
+                 '("%(-PDF)"
+                   (lambda ()
+                     (cond
+                      ((and (eq TeX-engine 'default)
+                            TeX-PDF-mode)
+                       "-pdf")
+                      ((eq TeX-engine 'xetex) "-xelatex ")
+                      (t "")))))
+    (add-to-list 'TeX-command-list
+                 '("LaTexmk"
+                   "latexmk %(-PDF) %(mode) %(file-line-error) %(extraopts) %(output-dir) %S%(PDFout) %t"
+                   TeX-run-format
+                   nil
+                   (latex-mode doctex-mode)
+                   :help "Run Latexmk")))
+
+  (advice-add #'TeX-output-extension :before #'auctex:latexmk--TeX-output-extension)
+  (defun auctex:latexmk--TeX-output-extension ()
+    (when (and TeX-PDF-mode
+               (eq TeX-engine 'xetex)
+               (string-match-p "latexmk" TeX-command-default))
+      (unless (listp TeX-output-extension)
+        (setq TeX-output-extension (list TeX-output-extension)))))
+  )
 
 (use-package org
   :bind
