@@ -37,14 +37,16 @@
   ;; Style
   (LaTeX-default-style "standalone")
   (reftex-plug-into-AUCTeX t)
+  (TeX-clean-confirm nil)
   :config
   (setq-default TeX-master nil
-                TeX-engine 'xetex)
+                TeX-engine 'xetex
+                TeX-output-dir "build")
   ;; Revert the PDF-buffer after the TeX compilation has finished
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (TeX-source-correlate-mode)
 
-  (add-to-list 'TeX-tree-roots "~/Tex/texmf")
+  (add-to-list 'TeX-tree-roots (no-littering-expand-var-file-name "texmf"))
 
   ;; Config latemk
   (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)
@@ -72,6 +74,8 @@
                    (latex-mode doctex-mode)
                    :help "Run Latexmk")))
 
+  ;; See: https://github.com/tom-tan/auctex-latexmk/issues/28
+  ;;   &  https://stackoverflow.com/questions/3124273/compile-xelatex-tex-file-with-latexmk
   (advice-add #'TeX-output-extension :before #'auctex:latexmk--TeX-output-extension)
   (defun auctex:latexmk--TeX-output-extension ()
     (when (and TeX-PDF-mode

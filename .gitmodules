@@ -15,9 +15,6 @@
     build-step = borg-maketexi
     build-step = borg-makeinfo
     build-step = borg-update-autoloads
-[submodule "auctex-latexmk"]
-	path = lib/auctex-latexmk
-	url = https://github.com/emacsmirror/auctex-latexmk.git
 [submodule "avy"]
 	path = lib/avy
 	url = https://github.com/abo-abo/avy
@@ -119,6 +116,7 @@
 	path = lib/rime
 	url = https://github.com/DogLooksGood/emacs-rime
 [submodule "rime-ice"]
+    disabled = true
 	path = var/rime-ice
 	url = https://github.com/iDvel/rime-ice.git
 [submodule "s"]
@@ -142,3 +140,7 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "PIDcircuitTikZ"]
+    disabled = true
+	path = var/texmf/tex/latex/PIDcircuitTikZ
+	url = https://github.com/jellespijker/PIDcircuitTikZ.git
