@@ -89,6 +89,8 @@
   :bind
   (("C-c c" . org-capture)
    ("C-c a" . org-agenda))
+  :custom
+  (org-startup-truncated t)
   :config
   (require 'org-tempo)
   (setq org-M-RET-may-split-line '((default . nil)))
