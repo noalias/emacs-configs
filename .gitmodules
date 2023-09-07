@@ -136,7 +136,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "PIDcircuitTikZ"]
-    disabled = true
-	path = var/texmf/tex/latex/PIDcircuitTikZ
-	url = https://github.com/jellespijker/PIDcircuitTikZ.git
