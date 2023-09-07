@@ -10,6 +10,26 @@
                 tab-width 4
                 indent-tabs-mode nil))
 
+(use-package view-mode
+  :bind
+  (("C-;" . view-mode)
+   :map view-mode-map
+   ("G" . view-goto-line-last)
+   ("k" . view-scroll-line-backward)
+   ("j" . view-scroll-line-forward)
+   ("b" . view-scroll-page-backward)
+   ("f" . view-scroll-page-forward)))
+
+(use-package rect
+  :bind
+  (
+   :map rectangle-mark-mode-map
+   ("i" . string-insert-rectangle)
+   ("M-w" . copy-rectangle-as-kill)
+   ("C-w" . kill-rectangle)
+   ("C-d" . delete-rectangle))
+  )
+
 (use-package paren
   :hook (after-init-hook . show-paren-mode)
   :custom
@@ -30,7 +50,7 @@
     "Jump to a word start on the current line only."
     (interactive)
     (avy-with avy-goto-word-0
-              (avy-goto-word-0 nil (line-beginning-position) (line-end-position)))))
+      (avy-goto-word-0 nil (line-beginning-position) (line-end-position)))))
 
 (use-package aggressive-indent
   :hook (after-init-hook . global-aggressive-indent-mode))
