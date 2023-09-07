@@ -115,7 +115,7 @@
   (dired-compress-directory-default-suffix ".7z")
   :config
   (add-to-list 'dired-compress-files-alist '("\\.7z\\'" . "7z a %o -r %i"))
-  (add-to-list 'dired-compress-file-suffixes `(,(rx ?. (or "7z" "zip" "rar") eos)
+  (add-to-list 'dired-compress-file-suffixes `(,(rx ?. (or "7z" "zip" "rar" "gz") eos)
                                                ""
                                                "7z x -aoa -o%o %i")))
 

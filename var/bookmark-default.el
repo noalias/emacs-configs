@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Tex"
+(("Text"
+ (filename . "~/Text/")
+ (front-context-string . "  d:/noalias/Tex")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25848 16600 85623 0))
+("Tex"
  (filename . "~/Tex/")
  (front-context-string . "  d:/noalias/Tex")
  (rear-context-string)
