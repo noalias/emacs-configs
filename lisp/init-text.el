@@ -46,7 +46,7 @@
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (TeX-source-correlate-mode)
 
-  (add-to-list 'TeX-tree-roots (no-littering-expand-var-file-name "texmf"))
+  (add-to-list 'TeX-tree-roots (base:expand-req-file-name "texmf"))
 
   ;; Config latemk
   (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)

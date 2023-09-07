@@ -8,7 +8,7 @@
    ("M-j" . rime-force-enable)
    )
   :init
-  (setq rime-user-data-dir (no-littering-expand-var-file-name "rime-ice"))
+  (setq rime-user-data-dir (base:expand-req-file-name "rime-ice"))
   (let* ((name "default.custom.yaml")
          (file (expand-file-name name (no-littering-expand-etc-file-name "rime")))
          (target (expand-file-name name rime-user-data-dir)))

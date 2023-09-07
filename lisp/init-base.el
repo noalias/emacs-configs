@@ -16,6 +16,11 @@
   ;; VARS
   (defconst base:win-p (eq system-type 'windows-nt))
   (defconst base:linux-p (eq system-type 'gnu/linux))
+
+  (defun base:expand-req-file-name (file)
+    (let ((default-directory user-emacs-directory))
+      (expand-file-name file "req")))
+  
   :custom
   (custom-file (no-littering-expand-etc-file-name "custom.el"))
   (server-auth-dir (no-littering-expand-var-file-name "server"))
