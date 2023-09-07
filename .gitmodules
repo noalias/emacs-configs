@@ -137,5 +137,6 @@
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
 [submodule "req"]
+    disabled = true
 	path = req
 	url = ./req/
