@@ -136,3 +136,6 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "req"]
+	path = req
+	url = ./req/
