@@ -73,6 +73,9 @@
 [submodule "f"]
 	path = lib/f
 	url = https://github.com/rejeep/f.el
+[submodule "git-modes"]
+	path = lib/git-modes
+	url = https://github.com/magit/git-modes
 [submodule "llama"]
 	path = lib/llama
 	url = https://git.sr.ht/~tarsius/llama
@@ -109,6 +112,10 @@
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
+[submodule "req"]
+    disabled = true
+	path = req
+	url = ./req/
 [submodule "rg"]
 	path = lib/rg
 	url = https://github.com/emacsmirror/rg
@@ -136,7 +143,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "req"]
-    disabled = true
-	path = req
-	url = ./req/

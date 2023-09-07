@@ -1,4 +1,6 @@
 ;;;  -*- lexical-binding: t -*-
+
+;;;; `git'
 (use-package magit
   :defer
   :config
@@ -6,5 +8,7 @@
                           'magit-insert-modules
                           'magit-insert-stashes
                           'append))
-  
+
+(use-package git-modes :defer)
+
 (provide 'init-tools)
