@@ -12,13 +12,7 @@
 
 (use-package view-mode
   :bind
-  (("C-;" . view-mode)
-   :map view-mode-map
-   ("G" . view-goto-line-last)
-   ("k" . view-scroll-line-backward)
-   ("j" . view-scroll-line-forward)
-   ("b" . view-scroll-page-backward)
-   ("f" . view-scroll-page-forward)))
+  ("C-;" . view-mode))
 
 (use-package rect
   :bind
