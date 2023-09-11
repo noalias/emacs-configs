@@ -4,17 +4,6 @@
 [submodule "aggressive-indent"]
 	path = lib/aggressive-indent
 	url = https://github.com/Malabarba/aggressive-indent-mode
-[submodule "auctex"]
-	path = lib/auctex
-	url = https://github.com/emacsmirror/auctex
-    load-path = .
-    build-step = ./configure --with-lispdir=. --without-texmf-dir
-    build-step = ./autogen.sh
-    build-step = make
-    build-step = make doc
-    build-step = borg-maketexi
-    build-step = borg-makeinfo
-    build-step = borg-update-autoloads
 [submodule "avy"]
 	path = lib/avy
 	url = https://github.com/abo-abo/avy
