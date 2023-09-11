@@ -16,8 +16,6 @@
    (LaTeX-mode-hook . TeX-PDF-mode))
   :custom
   ;; use hidden dirs for auctex files
-  (TeX-auto-local ".auctex-auto")
-  (TeX-style-local ".auctex-style")
   (TeX-check-TeX nil)
   ;; Show output of Tex compilation in other window.
   ;; (TeX-show-compilation t)
@@ -46,6 +44,7 @@
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
   (TeX-source-correlate-mode)
 
+  ;; 配置本地包路径
   (add-to-list 'TeX-tree-roots (base:expand-req-file-name "texmf"))
 
   ;; Config latemk

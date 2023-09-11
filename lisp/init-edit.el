@@ -10,9 +10,18 @@
                 tab-width 4
                 indent-tabs-mode nil))
 
-(use-package view-mode
+(use-package view
   :bind
-  ("C-;" . view-mode))
+  (("C-;" . view-mode)
+   ([remap read-only-mode] . view-mode)
+   ([remap find-file-read-only] . view-file)
+   ([remap find-file-read-only-other-frame] . view-file-other-frame)
+   ([remap find-file-read-only-other-window] . view-file-other-window)
+   :map view-mode-map
+   ("j" . next-line)
+   ("k" . previous-line)
+   ("," . View-back-to-mark)
+   ("g" . avy-goto-line)))
 
 (use-package rect
   :bind
@@ -21,8 +30,7 @@
    ("i" . string-insert-rectangle)
    ("M-w" . copy-rectangle-as-kill)
    ("C-w" . kill-rectangle)
-   ("C-d" . delete-rectangle))
-  )
+   ("C-d" . delete-rectangle)))
 
 (use-package paren
   :hook (after-init-hook . show-paren-mode)
@@ -43,8 +51,13 @@
   (defun avy-goto-word-crt-line ()
     "Jump to a word start on the current line only."
     (interactive)
-    (avy-with avy-goto-word-0
-      (avy-goto-word-0 nil (line-beginning-position) (line-end-position)))))
+    (avy-with avy-goto-word-1
+      (avy-goto-word-0 nil (line-beginning-position) (line-end-position))))
+  (with-eval-after-load 'view
+    (define-keymap
+      :keymap view-mode-map
+      "g" #'avy-goto-line
+      "f" #'avy-goto-word-crt-line)))
 
 (use-package aggressive-indent
   :hook (after-init-hook . global-aggressive-indent-mode))
