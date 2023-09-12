@@ -1,3 +1,7 @@
+[submodule "req"]
+	disabled = true
+	path = req
+	url = ./req/
 [submodule "aggressive-completion"]
 	path = lib/aggressive-completion
 	url = https://github.com/emacsmirror/aggressive-completion
@@ -101,10 +105,6 @@
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
-[submodule "req"]
-    disabled = true
-	path = req
-	url = ./req/
 [submodule "rg"]
 	path = lib/rg
 	url = https://github.com/emacsmirror/rg
@@ -132,3 +132,8 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "auctex"]
+	path = lib/auctex
+	url = https://github.com/emacs-straight/auctex.git
+	no-makeinfo = doc
+	info-path = .
