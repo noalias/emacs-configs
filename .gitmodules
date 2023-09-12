@@ -137,3 +137,7 @@
 	url = https://github.com/emacs-straight/auctex.git
 	no-makeinfo = doc
 	info-path = .
+[submodule "rime-ice"]
+	path = etc/rime/rime-ice
+	url = https://github.com/iDvel/rime-ice.git
+	disabled = true	

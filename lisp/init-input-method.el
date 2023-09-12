@@ -8,7 +8,7 @@
    ("M-j" . rime-force-enable)
    )
   :init
-  (setq rime-user-data-dir (base:expand-req-file-name "rime-ice"))
+  (setq rime-user-data-dir (no-littering-expand-etc-file-name "rime/rime-ice"))
   (let* ((name "default.custom.yaml")
          (file (expand-file-name name (no-littering-expand-etc-file-name "rime")))
          (target (expand-file-name name rime-user-data-dir)))
@@ -23,7 +23,7 @@
   (rime-show-preedit 'inline)
   (rime-title (substring-no-properties (nerd-icons-codicon "nf-cod-edit")))
   (rime-inline-ascii-trigger 'shift-r)
-  (rime-show-candidate 'minibuffer) ;; Options `message' `minibuffer' `posframe'
+  (rime-show-candidate 'posframe) ;; Options `message' `minibuffer' `posframe'
   (rime-disable-predicates '(rime-predicate-prog-in-code-p))
   (rime-inline-predicates '(rime-predicate-space-after-cc-p
                             rime-predicate-after-ascii-char-p
