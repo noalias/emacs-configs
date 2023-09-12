@@ -45,7 +45,9 @@
   (TeX-source-correlate-mode)
 
   ;; 配置本地包路径
-  (add-to-list 'TeX-tree-roots (base:expand-req-file-name "texmf"))
+  ;; (add-to-list 'TeX-tree-roots (base:expand-req-file-name "texmf"))
+  ;; 无法通过该设置使编译器查找到`texmf'.
+  ;; 只能通过`tlmgr conf texmf TEXMFHOME /path/to/package'进行设置。
 
   ;; Config latemk
   (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)
