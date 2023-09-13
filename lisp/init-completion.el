@@ -132,7 +132,7 @@ if that doesn't produce a completion match."
                                    eshell-mode
                                    shell-mode))
   (setq company-idle-delay 0
-        company-minimum-prefix-length 3
+        company-minimum-prefix-length 2
         company-icon-margin 3
         company-require-match nil
         company-dabbrev-ignore-case nil

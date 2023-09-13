@@ -1,15 +1,4 @@
 ;;; -*- lexical-binding: t -*-
-;; (use-package helpful
-;;   :vc
-;;   :bind
-;;   (([remap describe-variable] . helpful-variable)
-;;    ([remap describe-symbol] . helpful-symbol)
-;;    ([remap describe-function] . helpful-callable)
-;;    ([remap describe-command] . helpful-command)
-;;    ([remap Info-goto-emacs-command-node] . helpful-function)
-;;    ([remap describe-key] . helpful-key)
-;;    ("C-h SPC" . helpful-at-point)))
-
 (use-package apropos
   :defer t
   :config
