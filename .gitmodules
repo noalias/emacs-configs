@@ -1,13 +1,14 @@
-[submodule "req"]
-	disabled = true
-	path = req
-	url = ./req/
 [submodule "aggressive-completion"]
 	path = lib/aggressive-completion
 	url = https://github.com/emacsmirror/aggressive-completion
 [submodule "aggressive-indent"]
 	path = lib/aggressive-indent
 	url = https://github.com/Malabarba/aggressive-indent-mode
+[submodule "auctex"]
+	path = lib/auctex
+	url = https://github.com/emacs-straight/auctex.git
+	no-makeinfo = doc
+	info-path = .
 [submodule "avy"]
 	path = lib/avy
 	url = https://github.com/abo-abo/avy
@@ -17,6 +18,9 @@
 [submodule "cargo"]
 	path = lib/cargo
 	url = https://github.com/kwrooijen/cargo.el
+[submodule "cdlatex"]
+	path = lib/cdlatex
+	url = https://github.com/cdominik/cdlatex
 [submodule "closql"]
 	path = lib/closql
 	url = https://github.com/emacscollective/closql.git
@@ -105,12 +109,20 @@
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
+[submodule "req"]
+	disabled = true
+	path = req
+	url = ./req/
 [submodule "rg"]
 	path = lib/rg
 	url = https://github.com/emacsmirror/rg
 [submodule "rime"]
 	path = lib/rime
 	url = https://github.com/DogLooksGood/emacs-rime
+[submodule "rime-ice"]
+	path = etc/rime/rime-ice
+	url = https://github.com/iDvel/rime-ice.git
+	disabled = true	
 [submodule "s"]
 	path = lib/s
 	url = https://github.com/emacsmirror/s
@@ -132,12 +144,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "auctex"]
-	path = lib/auctex
-	url = https://github.com/emacs-straight/auctex.git
-	no-makeinfo = doc
-	info-path = .
-[submodule "rime-ice"]
-	path = etc/rime/rime-ice
-	url = https://github.com/iDvel/rime-ice.git
-	disabled = true	
