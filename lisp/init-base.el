@@ -16,18 +16,20 @@
   ;; VARS
   (defconst base:win-p (eq system-type 'windows-nt))
   (defconst base:linux-p (eq system-type 'gnu/linux))
-
-  (defun base:expand-req-file-name (file)
-    (let ((default-directory user-emacs-directory))
-      (expand-file-name file "req")))
-  
+  ;; FUNCTIONS
+  (defun base:expand-scoop-bin (app &optional subdir)
+    (or subdir (setq subdir ""))
+    (when-let (dir (getenv "SCOOP"))
+      (expand-file-name
+       (format "apps/%s/current/%s" app subdir)
+       dir)))
   :custom
   (custom-file (no-littering-expand-etc-file-name "custom.el"))
   (server-auth-dir (no-littering-expand-var-file-name "server"))
   :config
   (when (file-exists-p custom-file)
     (load custom-file))
-  
+
   (progn ; `Encoding'
     ;; (set-language-environment               "UTF-8")     ;; System default coding
     ;; (prefer-coding-system                   'utf-8)      ;; prefer
@@ -50,6 +52,7 @@
     (setq system-time-locale "C")
     (when base:win-p
       (set-file-name-coding-system 'gbk)
+      (setq default-process-coding-system '(utf-8 . gbk))
       (modify-coding-system-alist 'process
                                   (rx (or (and (or ?c ?C)
                                                (or ?m ?M)
@@ -59,8 +62,11 @@
                                                (or ?o ?O)
                                                (or ?x ?X)
                                                (or ?y ?Y))
-                                          "gm" "7z" "es" "fd" "rg"))
+                                          "gm" "magick" "7z" "es" "fd" "rg"))
                                   '(utf-8-auto . chinese-gbk-dos))))
+  (progn ; `path'
+    (when base:win-p
+      (add-to-list 'exec-path (base:expand-scoop-bin "git-with-openssh" "usr/bin"))))
 
   (progn ; `unset-keys'
     (global-unset-key (kbd "C-x C-o"))

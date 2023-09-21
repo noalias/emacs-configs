@@ -16,23 +16,8 @@
                      ,(rx bos ?.
                           (or (seq "do" (or ?c ?t) (? ?x))
                               "ppt")
-                          eos)))
-  :config
-  (defconst clip-command (executable-find "/mnt/c/WINDOWS/system32/clip.exe"))
-
-  (defun wsl-cut-region-to-clipboard (start end)
-    (interactive "r")
-    (if (null clip-command)
-        (user-error "Cannot find clip.exe.")
-      (call-process-region start end clip-command nil 0)
-      (kill-region start end)))
-
-  (defun wsl-copy-region-to-clipboard (start end)
-    (interactive "r")
-    (if (null clip-command)
-        (user-error "Cannot find clip.exe.")
-      (call-process-region start end clip-command nil 0)
-      (kill-ring-save start end)))
+                          eos))
+                   )
   )
 
 (provide 'init-file)

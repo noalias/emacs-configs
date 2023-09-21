@@ -7,9 +7,7 @@
   :mode ("README\\.md\\'" . gfm-mode))
 
 (use-package latex
-  :init
-  (require 'tex-site)
-  :mode ("\\.tex\\'" . latex-mode)
+  :mode ("\\.tex\\'" . LaTex-mode)
   :hook
   ((LaTeX-mode-hook . LaTeX-math-mode)
    (LaTeX-mode-hook . turn-on-reftex)
@@ -50,7 +48,22 @@
   ;; 只能通过`tlmgr conf texmf TEXMFHOME /path/to/package'进行设置。
 
   ;; Config latemk
-  (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)
+  (defun TeX-command-master-run-latexmk (&optional override-confirm)
+    "Run command on the current document.
+
+If a prefix argument OVERRIDE-CONFIRM is given, confirmation will
+depend on it being positive instead of the entry in `TeX-command-list'."
+    (interactive "P")
+    (TeX-master-file nil nil t)  ;; call to ask if necessary
+    (TeX-command "LaTexmk" #'TeX-master-file override-confirm))
+
+  (when (executable-find "latexmk")
+    (add-hook 'LaTeX-mode-hook #'auctex:latexmk-setup)
+    (define-keymap
+      :keymap LaTeX-mode-map
+      "C-c C-c" #'TeX-command-master-run-latexmk
+      "C-c C-x" #'TeX-command-master))
+
   (defun auctex:latexmk-setup ()
     (setq TeX-command-default "LaTexmk"
           TeX-command-extra-options (cond
@@ -86,6 +99,10 @@
         (setq TeX-output-extension (list TeX-output-extension)))))
   )
 
+(use-package cdlatex
+  :hook ((LaTeX-mode-hook . turn-on-cdlatex)
+         (latex-mode-hook . turn-on-cdlatex)))
+
 (use-package org
   :bind
   (("C-c c" . org-capture)
@@ -103,7 +120,9 @@
                              ("toys.org" :level . 1)
                              ("projects.org" :level . 1))
         ;; `entry' 放置在子节点首位
-        org-reverse-note-order t))
+        org-reverse-note-order t)
+  (when (fboundp 'turn-on-cdlatex)
+    (add-hook 'org-mode-hook #'org-cdlatex-mode)))
 
 (provide 'init-text)
 ;;; init-text.el ends here

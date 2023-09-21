@@ -14,6 +14,8 @@
                                                "ppt")
                                            eos)
                                       "dwg"
+                                      "dxf"
+                                      "DXF"
                                       "xlsx"))
   :bind
   (:map dired-mode-map
@@ -126,6 +128,7 @@
 
 (use-package nerd-icons-dired
   :hook dired-mode-hook)
+
 
 (provide 'init-dired)
 ;;; init-dired.el ends here

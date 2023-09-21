@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
-(require 'image-converter)
 
+;;;; image-converter
 (defvar mupdf-tool (or (executable-find "mutool")
                        (user-error "Can not find `mutool'.")))
 

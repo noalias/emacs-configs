@@ -29,7 +29,7 @@
   (setq use-package-verbose t))
 
 (use-package borg
-  :load-path "lib/borg"
+  :load-path ("lib/borg" "lib/auctex")
   :config
   (borg-initialize))
 
@@ -43,6 +43,7 @@
   (use-package init-completion)
   (use-package init-buffer)
   (use-package init-dired)
+  (use-package init-image)
   (use-package init-face)
   (use-package init-window)
   (use-package init-edit)
