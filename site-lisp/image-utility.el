@@ -11,7 +11,9 @@
                          ext)))
       (user-error "The extension of output MUST equal EXT."))
   (unless output
-    (setq output (file-name-sans-extension file)))  
+    (setq output (file-name-sans-extension file)))
+  (unless (featurep 'image-converter)
+    (require 'image-converter))
   (let ((image-convert-to-format ext))
     (unless (file-name-extension output)
       (setq output (concat output "." ext)))

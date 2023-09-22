@@ -79,7 +79,6 @@ if that doesn't produce a completion match."
    ([remap yank-pop] . consult-yank-pop)
    ([remap goto-line] . consult-goto-line)
    ([remap imenu] . consult-imenu)
-   ([remap isearch-forward] . consult-line)
    ([remap Info-search] . consult-info)
    ([remap repeat-complex-command] . consult-complex-command)
    ("M-g o" . consult-outline)
@@ -105,8 +104,7 @@ if that doesn't produce a completion match."
         consult-async-input-debounce 0.1
         consult-async-input-throttle 0.2
         consult-narrow-key "<"
-        consult-line-number-widwn t)
-  )
+        consult-line-number-widwn t))
 
 (use-package consult-dir
   :bind
