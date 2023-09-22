@@ -8,6 +8,9 @@
 ;;; dired
 (use-package dired
   :init
+  (defvar-keymap dired:utilities
+    :prefix 'dired:utilities)
+  
   (defvar dired:externally-file-ext `("pdf"
                                       ,(rx bos
                                            (or (seq "do" (or ?c ?t) (? ?x))
@@ -30,9 +33,19 @@
         ("b" . dired-up-directory)
         ("e" . dired:find-file-externally)
         ("E" . dired-toggle-read-only)
-        ("/ p" . dired:convert-image-to-pdf)
-        ("/ i" . dired:convert-pdf-to-image)
-        ("/ m" . dired:merge-pdf-files))
+        ("/ u" . dired-upcase)
+        ("/ l" . dired-downcase)
+        ("/ d" . dired-flag-files-regexp)
+        ("/ g" . dired-mark-files-containing-regexp)
+        ("/ m" . dired-mark-files-regexp)
+        ("/ r" . dired-do-rename-regexp)
+        ("/ C" . dired-do-copy-regexp)
+        ("/ H" . dired-do-hardlink-regexp)
+        ("/ R" . dired-do-rename-regexp)
+        ("/ S" . dired-do-symlink-regexp)
+        ("/ Y" . dired-do-relsymlink-regexp)
+        ("/ &" . dired-flag-garbage-files)
+        ("SPC" . dired:utilities))
   :custom
   (dired-hide-details-hide-symlink-targets nil)
   :config
@@ -42,7 +55,13 @@
         dired-recursive-copies 'always
         ;;        dired-kill-when-opening-new-dired-buffer t
         )
-  
+
+  (define-keymap 
+    :keymap dired:utilities
+    "p" #'dired:convert-image-to-pdf
+    "i" #'dired:convert-pdf-to-image
+    "m" #'dired:merge-pdf-files)
+
   (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
   (defun dired:find-file-externally (&optional arg)
