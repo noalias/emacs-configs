@@ -30,15 +30,6 @@
 [submodule "compat"]
 	path = lib/compat
 	url = https://git.sr.ht/~pkal/compat
-[submodule "consult"]
-	path = lib/consult
-	url = https://github.com/emacsmirror/consult
-[submodule "consult-company"]
-	path = lib/consult-company
-	url = https://github.com/mohkale/consult-company
-[submodule "consult-dir"]
-	path = lib/consult-dir
-	url = https://github.com/emacsmirror/consult-dir
 [submodule "dash"]
 	path = lib/dash
 	url = https://github.com/emacsmirror/dash
@@ -109,10 +100,6 @@
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
-[submodule "req"]
-	disabled = true
-	path = req
-	url = ./req/
 [submodule "rg"]
 	path = lib/rg
 	url = https://github.com/emacsmirror/rg
@@ -135,6 +122,11 @@
 [submodule "treesit-auto"]
 	path = lib/treesit-auto
 	url = https://github.com/renzmann/treesit-auto
+[submodule "vertico"]
+	path = lib/vertico
+	url = https://github.com/minad/vertico
+	load-path = .
+	load-path = extensions	
 [submodule "wgrep"]
 	path = lib/wgrep
 	url = https://github.com/emacsmirror/wgrep

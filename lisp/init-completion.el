@@ -35,6 +35,11 @@
   (completions-max-height 20)
   (completions-sort #'completion:list-sort)
   :config
+  ;; Enable recursive minibuffers
+  (setq enable-recursive-minibuffers t)
+  ;; Do not allow the cursor in the minibuffer prompt
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  
   (defun completion:list-sort (all)
     "对 `Completions-buffer' 中的补全项进行排序"
     (let ((hist (minibuffer-history-value)))
@@ -53,12 +58,16 @@ if that doesn't produce a completion match."
     (if (and (not force) minibuffer--require-match)
         (minibuffer-complete-and-exit)
       (exit-minibuffer)))
+  
+  (defun crm-indicator (args)
+    (cons (format "[CRM%s] %s"
+                  (replace-regexp-in-string
+                   "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                   crm-separator)
+                  (car args))
+          (cdr args)))
+  (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
   )
-
-(use-package aggressive-completion
-  :hook after-init-hook
-  :custom
-  (aggressive-completion-delay 0.4))
 
 (use-package orderless
   :custom
@@ -66,54 +75,16 @@ if that doesn't produce a completion match."
   (completion-category-defaults nil)
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
-(use-package consult
-  :demand t
-  :hook
-  (completion-list-mode . consult-preview-at-point-mode)
-  :bind
-  (([remap switch-to-buffer] . consult-buffer)
-   ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
-   ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
-   ([remap bookmark-jump] . consult-bookmark)
-   ([remap project-switch-to-buffer] . consult-project-buffer)
-   ([remap yank-pop] . consult-yank-pop)
-   ([remap goto-line] . consult-goto-line)
-   ([remap imenu] . consult-imenu)
-   ([remap Info-search] . consult-info)
-   ([remap repeat-complex-command] . consult-complex-command)
-   ("M-g o" . consult-outline)
-   ("M-g I" . consult-imenu-multi)
-   ("M-g m" . consult-mark)
-   ("M-s f" . consult-fd)
-   ("M-s g" . consult-ripgrep)
-   ("M-s l" . consult-line)
-   ("M-s L" . consult-line-multi)
-   ("M-s k" . consult-keep-lines)
-   ("M-s u" . consult-focus-lines)
-   :map isearch-mode-map
-   ("M-e" . consult-isearch-history)
-   :map minibuffer-local-map
-   ("M-s" . consult-history)
-   ("M-r" . consult-history))
-  :init
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
-  :config
-  (setq consult-async-min-input 2
-        consult-async-refresh-delay 0.15
-        consult-async-input-debounce 0.1
-        consult-async-input-throttle 0.2
-        consult-narrow-key "<"
-        consult-line-number-widwn t))
+(use-package vertico
+  :hook after-init-hook)
 
-(use-package consult-dir
-  :bind
-  (("C-x C-d" . consult-dir)
-   :map minibuffer-local-completion-map
-   ("C-x C-d" . consult-dir)
-   ("C-x C-j" . consult-dir-jump-file))
-  :config
-  (setq consult-dir-default-command 'consult-dir-dired))
+(use-package vertico-directory
+  :after vertico
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word))
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package company
   :hook
@@ -135,18 +106,6 @@ if that doesn't produce a completion match."
         company-require-match nil
         company-dabbrev-ignore-case nil
         company-dabbrev-downcase nil))
-
-(use-package consult-company
-  :after (company consult)
-  :bind
-  (
-   :map company-mode-map
-   ([remap completino-at-point] . consult-company)
-   :map company-active-map
-   ([remap company-search-candidates] . consult-company))
-  :config
-  (consult-customize consult-company
-                     :initial company-prefix))
 
 (use-package nerd-icons-completion
   :config
