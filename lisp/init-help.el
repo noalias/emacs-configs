@@ -1,4 +1,8 @@
 ;;; -*- lexical-binding: t -*-
+(define-key help-map (kbd "K") #'describe-keymap)
+
+(advice-add 'help-view-source :after (lambda () (view-mode)))
+
 (use-package apropos
   :defer t
   :config
