@@ -8,9 +8,6 @@
 ;;; dired
 (use-package dired
   :init
-  (defvar-keymap dired:utilities
-    :prefix 'dired:utilities)
-  
   (defvar dired:externally-file-ext `("pdf"
                                       ,(rx bos
                                            (or (seq "do" (or ?c ?t) (? ?x))
@@ -57,7 +54,7 @@
         )
 
   (define-keymap 
-    :keymap dired:utilities
+    :prefix 'dired:utilities
     "p" #'dired:convert-image-to-pdf
     "i" #'dired:convert-pdf-to-image
     "m" #'dired:merge-pdf-files)
