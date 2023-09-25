@@ -13,6 +13,7 @@
                                            (or (seq "do" (or ?c ?t) (? ?x))
                                                "ppt")
                                            eos)
+                                      "mp4"
                                       "dwg"
                                       "dxf"
                                       "DXF"
