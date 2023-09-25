@@ -39,7 +39,7 @@
 
 (use-package doom-themes
   :config
-  (load-theme 'doom-dracula :no-confirm)
+  (load-theme 'doom-one :no-confirm)
   (setq doom-themes-enable-bold t
 	    doom-themes-enable-italic t))
 
