@@ -1,0 +1,7 @@
+* 如何使用
+#+BEGIN_SRC shell
+  cd $XDG_CONFIG_HOME
+  git clone --depth 1 --recurse-submodules https://github.com/noalias/emacs-configs.git emacs
+  cd emacs
+  make build
+#+END_SRC
