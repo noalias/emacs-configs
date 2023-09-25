@@ -70,6 +70,7 @@ if that doesn't produce a completion match."
   )
 
 (use-package orderless
+  :if nil
   :custom
   (completion-styles '(orderless basic))
   (completion-category-defaults nil)
@@ -105,7 +106,16 @@ if that doesn't produce a completion match."
         company-icon-margin 3
         company-require-match nil
         company-dabbrev-ignore-case nil
-        company-dabbrev-downcase nil))
+        company-dabbrev-downcase nil)
+
+  ;; Disable orderless for company-capf
+  ;; https://www.reddit.com/r/emacs/comments/nichkl/comment/gz1jr3s/
+  (defun company:completion-styles (capf-fn &rest args)
+    (let ((completion-styles '(basic partial-completion)))
+      (apply capf-fn args)))
+
+  (advice-add 'company-capf :around #'company:completion-styles)
+  )
 
 (use-package nerd-icons-completion
   :config
