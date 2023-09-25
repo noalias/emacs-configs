@@ -70,7 +70,6 @@ if that doesn't produce a completion match."
   )
 
 (use-package orderless
-  :if nil
   :custom
   (completion-styles '(orderless basic))
   (completion-category-defaults nil)
