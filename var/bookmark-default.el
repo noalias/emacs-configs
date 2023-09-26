@@ -26,12 +26,6 @@
  (rear-context-string)
  (position . 1)
  (last-modified 25849 33526 48271 0))
-("Text"
- (filename . "~/Text/")
- (front-context-string . "  d:/noalias/Tex")
- (rear-context-string)
- (position . 1)
- (last-modified 25852 10730 131967 0))
 ("Tex"
  (filename . "~/Tex/")
  (front-context-string . "  d:/noalias/Tex")
