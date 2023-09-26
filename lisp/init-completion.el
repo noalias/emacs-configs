@@ -135,22 +135,11 @@ if that doesn't produce a completion match."
   )
 
 (use-package nerd-icons-completion
-  :config
-  (nerd-icons-completion-mode))
+  :hook after-init-hook)
 
 (use-package rg
   :bind
-  ("M-s s" . rg-autoload-keymap)
-  :config
-  (defun rg-autoload-keymap ()
-    (interactive)
-    (if (not (require 'rg nil t))
-        (user-error (format "Cannot load rg"))
-      (let ((key-vec (this-command-keys-vector)))
-        (global-set-key key-vec rg-global-map)
-        (setq unread-command-events
-              (mapcar (lambda (ev) (cons t ev))
-                      (listify-key-sequence key-vec)))))))
+  ("M-s r" . rg-menu))
 
 (provide 'init-completion)
 ;;; init-completion.el ends here
