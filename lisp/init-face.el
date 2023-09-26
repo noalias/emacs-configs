@@ -13,8 +13,8 @@
     "My fonts.")
 
   (defvar face:emoji-font
-    (cond (base:win-p "Segoe UI Emoji")
-          (base:linux-p "Noto Color Emoji")))
+    (cond (def:win-p "Segoe UI Emoji")
+          (def:linux-p "Noto Color Emoji")))
 
   (defvar face:fontset-font "HarmonyOS Sans SC")
   :config

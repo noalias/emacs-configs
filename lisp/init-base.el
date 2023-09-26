@@ -12,17 +12,6 @@
 (use-package emacs
   :demand t
   :hook (after-init-hook . savehist-mode)
-  :init
-  ;; VARS
-  (defconst base:win-p (eq system-type 'windows-nt))
-  (defconst base:linux-p (eq system-type 'gnu/linux))
-  ;; FUNCTIONS
-  (defun base:expand-scoop-bin (app &optional subdir)
-    (or subdir (setq subdir ""))
-    (when-let (dir (getenv "SCOOP"))
-      (expand-file-name
-       (format "apps/%s/current/%s" app subdir)
-       dir)))
   :custom
   (custom-file (no-littering-expand-etc-file-name "custom.el"))
   (server-auth-dir (no-littering-expand-var-file-name "server"))
@@ -50,7 +39,7 @@
     (prefer-coding-system 'utf-8)
     (setq locale-coding-system 'utf-8)
     (setq system-time-locale "C")
-    (when base:win-p
+    (when def:win-p
       (set-file-name-coding-system 'gbk)
       (setq default-process-coding-system '(utf-8 . gbk))
       (modify-coding-system-alist 'process
@@ -65,8 +54,8 @@
                                           "gm" "magick" "7z" "es" "fd" "rg"))
                                   '(utf-8-auto . chinese-gbk-dos))))
   (progn ; `path'
-    (when base:win-p
-      (add-to-list 'exec-path (base:expand-scoop-bin "git-with-openssh" "usr/bin"))))
+    (when def:win-p
+      (add-to-list 'exec-path (def:expand-scoop-bin-file-name "git-with-openssh" "usr/bin"))))
 
   (progn ; `unset-keys'
     (global-unset-key (kbd "C-x C-o"))

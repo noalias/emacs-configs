@@ -66,24 +66,13 @@
     (defun dired:find-file-externally (&optional arg)
       "Open marked or current file in operating system's default application."
       (interactive "P")
-      (let ((open (lambda (file)
-                    (if (and (eq system-type 'windows-nt)
-                             (fboundp 'w32-shell-execute))
-                        (w32-shell-execute "open" file)
-                      (call-process (pcase system-type
-                                      ('darwin "open")
-                                      ('cygwin "cygstart")
-                                      (_ "xdg-open"))
-                                    nil 0 nil
-                                    (expand-file-name file)))
-                    (message "Opened \"%s\" successfully." file))))
-        (dired-map-over-marks
-         (let ((file (dired-get-file-for-visit)))
-           (if (or (file-directory-p file)
-                   (string-match-p dired:externally-file-ext-regex
-                                   (file-name-extension file)))
-               (funcall open file)))
-         arg)))
+      (dired-map-over-marks
+       (let ((file (dired-get-file-for-visit)))
+         (if (or (file-directory-p file)
+                 (string-match-p dired:externally-file-ext-regex
+                                 (file-name-extension file)))
+             (def:find-file-externally file)))
+       arg))
 
   (defun dired:merge-pdf-files (name)
     "将 `image' 文件及 `pdf' 合并为一个 `pdf' 文件"

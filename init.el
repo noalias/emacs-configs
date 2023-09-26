@@ -37,6 +37,7 @@
 (use-package emacs
   :load-path ("lisp" "site-lisp")
   :init
+  (use-package init-def)
   (use-package init-base)
   :config
   (use-package init-tools)
