@@ -2,7 +2,7 @@
 (use-package emacs
   :demand
   :bind
-  (("C-x C-k" . kill-buffer-and-window)
+  (("C-x K" . kill-buffer-and-window)
    ("C-x x p" . switch-to-prev-buffer)
    ("C-x x n" . switch-to-next-buffer))
   :init
