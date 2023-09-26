@@ -2,7 +2,25 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Creo"
+(("note"
+ (filename . "~/study/note/")
+ (front-context-string . "  d:/noalias/stu")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25874 57032 436949 0))
+("Family"
+ (filename . "d:/Family/")
+ (front-context-string . "  d:/Family:\n  d")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25874 37199 484853 0))
+("personal"
+ (filename . "d:/personal/")
+ (front-context-string . "  d:/personal:\n ")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25874 36944 194465 0))
+("Creo"
  (filename . "d:/Creo/")
  (front-context-string . "  d:/Creo:\n  drw")
  (rear-context-string)
