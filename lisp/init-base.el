@@ -76,7 +76,8 @@
     (global-unset-key (kbd "C-h C-f"))
     (global-unset-key (kbd "C-x C-b"))
     (global-unset-key (kbd "C-x C-p"))
-    (global-unset-key (kbd "C-h C-a")))
+    (global-unset-key (kbd "C-h C-a"))
+    (global-unset-key (kbd "M-i")))
 
   (progn ; `misc'
     (fset 'yes-or-no-p 'y-or-n-p)

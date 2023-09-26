@@ -1,13 +1,15 @@
 ;;;  -*- lexical-binding: t -*-
 (use-package minibuffer
   :bind
-  (:map minibuffer-local-completion-map
-        ("C-n" . minibuffer-next-completion)
-        ("C-p" . minibuffer-previous-completion)
-        ("C-RET" . completion:force-exit)
-        ("SPC")
-        :map completion-list-mode-map
-	    ("z" . switch-to-minibuffer))
+  (
+   :map minibuffer-local-completion-map
+   ("M-i" . minibuffer:insert-bookmark)
+   ("C-n" . minibuffer-next-completion)
+   ("C-p" . minibuffer-previous-completion)
+   ("C-RET" . completion:force-exit)
+   ("SPC")
+   :map completion-list-mode-map
+   ("z" . switch-to-minibuffer))
   :custom
   (minibuffer-electric-default-mode t)
   ;; Don't insert completion at point into minibuffer
@@ -67,6 +69,20 @@ if that doesn't produce a completion match."
                   (car args))
           (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+  (defun minibuffer:insert-bookmark (bookmark)
+    (interactive
+     (list (let ((enable-recursive-minibuffers t))
+             (when (not (featurep 'bookmark))
+               (require 'bookmark))
+             (bookmark-completing-read "Insert bookmark"
+				                       bookmark-current-bookmark))))
+    (unless bookmark
+      (user-error "No bookmark specified"))
+    (when (minibufferp)
+      (bookmark-maybe-historicize-string bookmark)
+      (delete-minibuffer-contents)
+      (insert (bookmark-get-filename bookmark))))
   )
 
 (use-package orderless
@@ -76,7 +92,9 @@ if that doesn't produce a completion match."
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package vertico
-  :hook after-init-hook)
+  :hook after-init-hook
+  :bind (:map vertico-map
+              ("M-i" . minibuffer:insert-bookmark)))
 
 (use-package vertico-directory
   :after vertico
