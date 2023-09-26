@@ -9,70 +9,71 @@
 (use-package dired
   :init
   (defvar dired:externally-file-ext-regex (rx bos
-                                             (or (and "do" (or ?c ?t) (? ?x))
-                                                 (and "ppt" (? ?x))
-                                                 "pdf"
-                                                 "mp4"
-                                                 "dwg"
-                                                 "dxf"
-                                                 "DXF"
-                                                 "xlsx"
-                                                 )
-                                             eos)
-    :bind
-    (:map dired-mode-map
-          ("," . dired-create-empty-file)
-          ;; 折叠子目录
-          ("TAB" . dired-hide-subdir)
-          ("C-k" . dired-kill-subdir)
-          ("M-p" . dired-prev-subdir)
-          ("M-n" . dired-next-subdir)
-          ;; `f' 进入目录或文件
-          ;; `b' 返回上级目录
-          ("b" . dired-up-directory)
-          ("e" . dired:find-file-externally)
-          ("E" . dired-toggle-read-only)
-          ("/ u" . dired-upcase)
-          ("/ l" . dired-downcase)
-          ("/ d" . dired-flag-files-regexp)
-          ("/ g" . dired-mark-files-containing-regexp)
-          ("/ m" . dired-mark-files-regexp)
-          ("/ r" . dired-do-rename-regexp)
-          ("/ C" . dired-do-copy-regexp)
-          ("/ H" . dired-do-hardlink-regexp)
-          ("/ R" . dired-do-rename-regexp)
-          ("/ S" . dired-do-symlink-regexp)
-          ("/ Y" . dired-do-relsymlink-regexp)
-          ("/ &" . dired-flag-garbage-files)
-          ("SPC" . dired:utilities))
-    :custom
-    (dired-hide-details-hide-symlink-targets nil)
-    :config
-    (setq dired-listing-switches
-          "-l --almost-all --human-readable --group-directories-first --no-group"
-          dired-recursive-deletes 'always
-          dired-recursive-copies 'always
-          ;;        dired-kill-when-opening-new-dired-buffer t
-          )
+                                              (or (and "do" (or ?c ?t) (? ?x))
+                                                  (and "ppt" (? ?x))
+                                                  "pdf"
+                                                  "mp4"
+                                                  "dwg"
+                                                  "dxf"
+                                                  "DXF"
+                                                  "xlsx"
+                                                  )
+                                              eos)
+    )
+  :bind
+  (:map dired-mode-map
+        ("," . dired-create-empty-file)
+        ;; 折叠子目录
+        ("TAB" . dired-hide-subdir)
+        ("C-k" . dired-kill-subdir)
+        ("M-p" . dired-prev-subdir)
+        ("M-n" . dired-next-subdir)
+        ;; `f' 进入目录或文件
+        ;; `b' 返回上级目录
+        ("b" . dired-up-directory)
+        ("e" . dired:find-file-externally)
+        ("E" . dired-toggle-read-only)
+        ("/ u" . dired-upcase)
+        ("/ l" . dired-downcase)
+        ("/ d" . dired-flag-files-regexp)
+        ("/ g" . dired-mark-files-containing-regexp)
+        ("/ m" . dired-mark-files-regexp)
+        ("/ r" . dired-do-rename-regexp)
+        ("/ C" . dired-do-copy-regexp)
+        ("/ H" . dired-do-hardlink-regexp)
+        ("/ R" . dired-do-rename-regexp)
+        ("/ S" . dired-do-symlink-regexp)
+        ("/ Y" . dired-do-relsymlink-regexp)
+        ("/ &" . dired-flag-garbage-files)
+        ("SPC" . dired:utilities))
+  :custom
+  (dired-hide-details-hide-symlink-targets nil)
+  :config
+  (setq dired-listing-switches
+        "-l --almost-all --human-readable --group-directories-first --no-group"
+        dired-recursive-deletes 'always
+        dired-recursive-copies 'always
+        ;;        dired-kill-when-opening-new-dired-buffer t
+        )
 
-    (define-keymap 
-      :prefix 'dired:utilities
-      "p" #'dired:convert-image-to-pdf
-      "i" #'dired:convert-pdf-to-image
-      "m" #'dired:merge-pdf-files)
+  (define-keymap 
+    :prefix 'dired:utilities
+    "p" #'dired:convert-image-to-pdf
+    "i" #'dired:convert-pdf-to-image
+    "m" #'dired:merge-pdf-files)
 
-    (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 
-    (defun dired:find-file-externally (&optional arg)
-      "Open marked or current file in operating system's default application."
-      (interactive "P")
-      (dired-map-over-marks
-       (let ((file (dired-get-file-for-visit)))
-         (if (or (file-directory-p file)
-                 (string-match-p dired:externally-file-ext-regex
-                                 (file-name-extension file)))
-             (def:find-file-externally file)))
-       arg))
+  (defun dired:find-file-externally (&optional arg)
+    "Open marked or current file in operating system's default application."
+    (interactive "P")
+    (dired-map-over-marks
+     (let ((file (dired-get-file-for-visit)))
+       (if (or (file-directory-p file)
+               (string-match-p dired:externally-file-ext-regex
+                               (file-name-extension file)))
+           (def:find-file-externally file)))
+     arg))
 
   (defun dired:merge-pdf-files (name)
     "将 `image' 文件及 `pdf' 合并为一个 `pdf' 文件"
