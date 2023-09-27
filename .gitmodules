@@ -136,3 +136,6 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "denote"]
+	path = lib/denote
+	url = https://github.com/emacsmirror/denote
