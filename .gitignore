@@ -1,5 +1,5 @@
 /var/
 !/var/bookmark-default.el
-/next/
 **/*~
 *~
+/mini/experiment.el
