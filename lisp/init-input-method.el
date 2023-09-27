@@ -24,6 +24,9 @@
   (rime-title (substring-no-properties (nerd-icons-codicon "nf-cod-edit")))
   (rime-inline-ascii-trigger 'shift-r)
   (rime-show-candidate 'posframe) ;; Options `message' `minibuffer' `posframe'
+  (rime-posframe-properties (list :background-color "#333333"
+                                  :foreground-color "#dcdccc"
+                                  :internal-border-width 10))
   (rime-disable-predicates '(rime-predicate-prog-in-code-p))
   (rime-inline-predicates '(rime-predicate-space-after-cc-p
                             rime-predicate-after-ascii-char-p

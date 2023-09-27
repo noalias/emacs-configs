@@ -16,8 +16,7 @@
     (unless (nth 0 arg)
       (setf (car arg) treesit:load-path))
     (apply fn arg))
-  (advice-add #'treesit--install-language-grammar-1 :around #'treesit:patch--path)
-  )
+  (advice-add #'treesit--install-language-grammar-1 :around #'treesit:patch--path))
 
 ;;; `prog-mode'
 (use-package prog-mode
