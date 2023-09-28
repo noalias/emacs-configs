@@ -67,13 +67,16 @@
   (defun dired:find-file-externally (&optional arg)
     "Open marked or current file in operating system's default application."
     (interactive "P")
-    (dired-map-over-marks
-     (let ((file (dired-get-file-for-visit)))
-       (if (or (file-directory-p file)
-               (string-match-p dired:externally-file-ext-regex
-                               (file-name-extension file)))
-           (def:find-file-externally file)))
-     arg))
+    (cond
+     ((consp arg)
+      (def:find-file-externally (dired-current-directory)))
+     (t (dired-map-over-marks
+         (let ((file (dired-get-file-for-visit)))
+           (if (or (file-directory-p file)
+                   (string-match-p dired:externally-file-ext-regex
+                                   (file-name-extension file)))
+               (def:find-file-externally file)))
+         arg))))
 
   (defun dired:merge-pdf-files (name)
     "将 `image' 文件及 `pdf' 合并为一个 `pdf' 文件"
