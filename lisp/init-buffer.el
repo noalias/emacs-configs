@@ -75,7 +75,7 @@
 
 (use-package ibuffer
   :bind
-  ([remap list-buffers] . ibuffer)
+  ([remap list-buffers] . ibuffer-jump)
   :init
   (setq ibuffer-filter-group-name-face '(:inherit (font-lock-string-face bold)))
   :custom

@@ -63,7 +63,6 @@
     (global-unset-key (kbd "C-x C-d"))
     (global-unset-key (kbd "C-x C-k"))
     (global-unset-key (kbd "C-h C-f"))
-    (global-unset-key (kbd "C-x C-b"))
     (global-unset-key (kbd "C-x C-p"))
     (global-unset-key (kbd "C-h C-a"))
     (global-unset-key (kbd "M-i")))
