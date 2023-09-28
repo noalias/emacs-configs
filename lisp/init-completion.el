@@ -137,9 +137,5 @@ if that doesn't produce a completion match."
 (use-package nerd-icons-completion
   :hook after-init-hook)
 
-(use-package rg
-  :bind
-  ("M-s r" . rg-menu))
-
 (provide 'init-completion)
 ;;; init-completion.el ends here
