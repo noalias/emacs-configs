@@ -37,10 +37,10 @@
     ;; UTF-8 as the default coding system
     (set-charset-priority 'unicode)
     (prefer-coding-system 'utf-8)
-    (setq locale-coding-system 'utf-8)
+    ;; (setq locale-coding-system 'utf-8)
     (setq system-time-locale "C")
     (when def:win-p
-      (set-file-name-coding-system 'gbk)
+      ;; (set-file-name-coding-system 'chinese-gbk)
       (setq default-process-coding-system '(utf-8 . gbk))
       (modify-coding-system-alist 'process
                                   (rx (or (and (or ?c ?C)
