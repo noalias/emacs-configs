@@ -29,19 +29,5 @@
   (add-to-list 'image-crop-resize-command "gm")
   (add-to-list 'image-crop-rotate-command "gm"))
 
-(defvar image:edit-command "flameshot")
-(defvar image:edit-new-file-name-format "%s-new.png")
-
-(defun image:edit ()
-  (interactive nil image-mode)
-  (when (eq major-mode 'hexl-mode)
-    (hexl-mode-exit))
-  (let ((new-file (format image:edit-new-file-name-format
-                          (file-name-sans-extension (buffer-name)))))
-    (set-buffer (get-buffer-create new-file))
-    (insert (call-process image:edit-command nil t nil "gui" "--raw"))
-    (iimage-mode))
-  )
-
 (provide 'init-image)
 ;;; init-image.el ends here
