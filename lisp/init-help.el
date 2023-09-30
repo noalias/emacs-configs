@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t -*-
-(define-key help-map (kbd "K") #'describe-keymap)
-
-(advice-add 'help-view-source :after (lambda () (view-mode)))
+(use-package help
+  :bind (:map help-map
+              ("K" . describe-keymap))
+  :custom
+  (help-window-select t)
+  (help-window-keep-selected t))
 
 (use-package apropos
   :defer t

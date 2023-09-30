@@ -18,6 +18,9 @@
                               "ppt")
                           eos))
                    )
+  :config
+  ;; Active 'find file at point'.
+  (ffap-bindings)
   )
 
 (provide 'init-file)

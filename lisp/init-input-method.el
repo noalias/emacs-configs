@@ -21,9 +21,9 @@
   (rime-cursor "|")
   ;; 与`rime-cursor'互斥 
   (rime-show-preedit 'inline)
-  (rime-title (substring-no-properties (nerd-icons-codicon "nf-cod-edit")))
+  ;;(rime-title "🖊️")️
   (rime-inline-ascii-trigger 'shift-r)
-  (rime-show-candidate 'posframe) ;; Options `message' `minibuffer' `posframe'
+  (rime-show-candidate 'minibuffer) ;; Options `message' `minibuffer' `posframe'
   (rime-posframe-properties (list :background-color "#333333"
                                   :foreground-color "#dcdccc"
                                   :internal-border-width 10))
