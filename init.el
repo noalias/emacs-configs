@@ -29,9 +29,18 @@
   (setq use-package-verbose t))
 
 (use-package borg
-  :load-path ("lib/borg" "lib/auctex")
+  :load-path "lib/borg"
   :config
+  (add-to-list 'load-path (expand-file-name "lib/auctex" user-emacs-directory))
   (borg-initialize))
+
+(use-package auto-compile
+  :config
+  (setq auto-compile-display-buffer nil)
+  (setq auto-compile-mode-line-counter            t)
+  (setq auto-compile-source-recreate-deletes-dest t)
+  (setq auto-compile-toggle-deletes-nonlib-dest   t)
+  (setq auto-compile-update-autoloads             t))
 
 ;;; Long tail
 (use-package emacs

@@ -7,6 +7,13 @@
    (convert-standard-filename
 	(expand-file-name  "var/eln-cache/" user-emacs-directory))))
 
+(let ((dir (file-name-directory (or load-file-name buffer-file-name))))
+  (add-to-list 'load-path (expand-file-name "lib/compat" dir))
+  (add-to-list 'load-path (expand-file-name "lib/auto-compile" dir)))
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
 ;; packages config
 (progn ;;`Packages'
   (setq package-enable-at-startup nil
