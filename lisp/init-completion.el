@@ -137,5 +137,20 @@ if that doesn't produce a completion match."
 (use-package nerd-icons-completion
   :hook after-init-hook)
 
+(use-package marginalia
+  :hook after-init-hook
+  :config
+  (setq marginalia-annotator-registry
+        (assq-delete-all 'file marginalia-annotator-registry))
+
+  (advice-add 'marginalia-annotate-bookmark :override #'completion:marginalia-annotate-bookmark)
+  (defun completion:marginalia-annotate-bookmark (cand)
+    "Annotate bookmark CAND with its file name and front context string."
+    (when-let ((bm (assoc cand (bound-and-true-p bookmark-alist))))
+      (marginalia--fields
+       ((marginalia--bookmark-type bm) :width 10 :face 'marginalia-type)
+       ((bookmark-get-filename bm)
+        :truncate -0.5 :face 'marginalia-file-name)))))
+
 (provide 'init-completion)
 ;;; init-completion.el ends here
