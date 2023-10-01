@@ -91,5 +91,10 @@
 (use-package nerd-icons-ibuffer
   :hook (ibuffer-mode-hook . nerd-icons-ibuffer-mode))
 
+(use-package tabspaces
+  :hook after-init-hook
+  :custom
+  (tabspaces-keymap-prefix "C-c t"))
+
 (provide 'init-buffer)
 ;;; init-buffer.el ends here

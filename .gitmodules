@@ -131,6 +131,9 @@
 [submodule "shrink-path"]
 	path = lib/shrink-path
 	url = https://gitlab.com/bennya/shrink-path.el
+[submodule "tabspaces"]
+	path = lib/tabspaces
+	url = https://github.com/mclear-tools/tabspaces
 [submodule "treesit-auto"]
 	path = lib/treesit-auto
 	url = https://github.com/renzmann/treesit-auto
