@@ -103,9 +103,6 @@
 [submodule "orderless"]
 	path = lib/orderless
 	url = https://github.com/emacsmirror/orderless
-[submodule "popper"]
-	path = lib/popper
-	url = https://github.com/karthink/popper
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
