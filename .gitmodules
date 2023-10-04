@@ -67,9 +67,6 @@
 [submodule "f"]
 	path = lib/f
 	url = https://github.com/rejeep/f.el
-[submodule "fd-dired"]
-	path = lib/fd-dired
-	url = https://github.com/yqrashawn/fd-dired
 [submodule "git-modes"]
 	path = lib/git-modes
 	url = https://github.com/magit/git-modes

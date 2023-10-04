@@ -127,6 +127,89 @@
                                                ""
                                                "7z x -aoa -o%o %i")))
 
+(use-package find-dired
+  :init
+  (defvar dired:fd-args nil
+    "Last arguments given to `fd' by \\[dired:fd-dired]")
+  ;; History of fd-args values entered in the minibuffer.
+  (defvar dired:fd-args-history nil)
+  
+  (defvar dired:fd-dired-fd-pre-args
+    (concat " --color never"
+            (if def:win-p
+                (concat " --path-separator "
+                        (shell-quote-argument "/")))
+            " "))
+  
+  (defvar dired:fd-dired-rg-pre-args
+    (concat " --color never"
+            " --files-with-matches"
+            " -0"
+            " --regexp"
+            " "))
+  
+  (defun dired:fd-dired (dir args)
+    "Run `fd' and go into Dired mode on a buffer of the output.
+The default command run is
+fd ARGS -l
+."
+    (interactive (list
+                  (read-directory-name "Run fd in directory: " nil "" t)
+                  (read-string "Run fd (with args): " dired:fd-args
+                               (if dired:fd-args
+                                   '(dired:fd-args-history . 1)
+                                 'dired:fd-args-history))))
+    (setq dired:fd-args args
+          args (concat "fd"
+                       dired:fd-dired-fd-pre-args
+                       (unless (string= args "")
+                         (concat args " "))
+                       "-l"))
+    (find-dired-with-command dir args))
+
+  (defun dired:fd-dired-dwim (args)
+    "Run `fd' and go into Dired mode on a buffer of the output in `default-directory'."
+    (interactive (list
+                  (read-string "Run fd (with args): " fd-args
+                               (if fd-args
+                                   '(fd-args-history . 1)
+                                 'fd-args-history))))
+    (dired:fd-dired default-directory args))
+
+  (defun dired:fd-name-dired (dir pattern)
+    "Search DIR recursively for files matching the globbing PATTERN.
+and run Dired on those files.
+PATTERN is a shell wildcard (not an Emacs regexp) and need not be quoted.
+The default command run is
+fd -g PATTERN -l
+."
+    (interactive
+     "DFd-name (directory): \nsFd-name (filename wildcard): ")
+    (dired:fd-dired dir (concat "-g" " " (shell-quote-argument pattern))))
+
+  (defun dired:fd-rg-dired (dir regexp)
+    "Find files in DIR that contain matches for REGEXP and Dired on output.
+The default command run is
+fd -X rg --regexp REGEXP -l
+."
+    (interactive "DFd-rg (directory): \nsFd-rg (rg regexp): ")
+    (find-dired-with-command dir
+                             (concat "fd"
+                                     dired:fd-dired-fd-pre-args
+                                     "-X"
+                                     " "
+                                     "rg"
+                                     dired:fd-dired-rg-pre-args
+                                     (shell-quote-argument regexp)
+                                     " "
+                                     "|"
+                                     " "
+                                     "xargs -0 ls -dilsb")))
+  :bind
+  ("M-s d" . dired:fd-dired)
+  :custom
+  (find-ls-option find-ls-option-default-ls))
+
 (use-package diredfl
   :hook dired-mode-hook
   :config
@@ -134,7 +217,6 @@
 
 (use-package nerd-icons-dired
   :hook dired-mode-hook)
-
 
 (provide 'init-dired)
 ;;; init-dired.el ends here
