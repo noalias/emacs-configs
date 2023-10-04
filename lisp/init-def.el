@@ -31,9 +31,7 @@
 (defun def:expand-scoop-bin-file-name (app &optional subdir)
   (or subdir (setq subdir ""))
   (when-let (dir (getenv "SCOOP"))
-    (expand-file-name
-     (format "apps/%s/current/%s" app subdir)
-     dir)))
+    (concat dir "\\apps\\" app "\\current\\" subdir)))
 
 (defun def:find-file-externally (file)
   "INSTALL `open' \"cargo install open\"."

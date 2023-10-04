@@ -55,7 +55,9 @@
                                   '(utf-8-auto . chinese-gbk-dos))))
   (progn ; `path'
     (when def:win-p
-      (add-to-list 'exec-path (def:expand-scoop-bin-file-name "git-with-openssh" "usr/bin"))))
+      (let ((path (def:expand-scoop-bin-file-name "git-with-openssh" "usr\\bin")))
+        (add-to-list 'exec-path path)
+        (setenv "PATH" (concat path ";" (getenv "PATH"))))))
 
   (progn ; `unset-keys'
     (global-unset-key (kbd "C-x C-o"))
