@@ -21,8 +21,7 @@
    ("j" . next-line)
    ("k" . previous-line)
    ("," . View-back-to-mark)
-   ("g" . avy-goto-line))
-  :hook prog-mode-hook)
+   ("g" . avy-goto-line)))
 
 (use-package rect
   :bind

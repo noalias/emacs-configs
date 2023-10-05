@@ -8,7 +8,7 @@
   :init
   (defvar buffer:skip-regexp
     (rx bos
-        ?*
+        (? ?*)
         (or
          "Messages"
          "Output"
@@ -41,13 +41,11 @@
          "prolog"
          "rustfmt"
          "Disabled Command"
-         "straight-byte-compilation"
-         "straight-process"
          "magit-process: "
          "magit-diff: "
          )
         (* anything)
-        ?*
+        (? ?*)
         eos))
   :config
   (setq switch-to-prev-buffer-skip-regexp buffer:skip-regexp)
@@ -77,11 +75,6 @@
   :init
   (setq ibuffer-filter-group-name-face '(:inherit (font-lock-string-face bold)))
   :custom
-  ;; (ibuffer-modified-char (string-to-char (nerd-icons-octicon "nf-oct-diff_modified")))
-  ;; (ibuffer-read-only-char (string-to-char (nerd-icons-octicon "nf-oct-read")))
-  (ibuffer-marked-char (string-to-char (nerd-icons-mdicon "nf-md-bookmark_plus")))
-  (ibuffer-locked-char (string-to-char (nerd-icons-mdicon "nf-md-lock")))
-  (ibuffer-deletion-char (string-to-char (nerd-icons-mdicon "nf-md-delete")))
   (ibuffer-use-other-window t)
   ;; 是否展示被过滤项目
   (ibuffer-default-display-maybe-show-predicates t))

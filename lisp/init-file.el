@@ -9,15 +9,11 @@
         delete-auto-save-files t)
   :hook (after-init-hook . recentf-mode)
   :bind
-  ("C-x f" . find-file)
+  ("C-x f" . recentf)
   :custom
   (recentf-exclude `(,no-littering-var-directory
                      ,no-littering-etc-directory
-                     ,(rx bos ?.
-                          (or (seq "do" (or ?c ?t) (? ?x))
-                              "ppt")
-                          eos))
-                   )
+                     "Scoop"))
   :config
   ;; Active 'find file at point'.
   (ffap-bindings)

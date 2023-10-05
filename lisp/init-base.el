@@ -51,7 +51,7 @@
                                                (or ?o ?O)
                                                (or ?x ?X)
                                                (or ?y ?Y))
-                                          "gm" "magick" "7z" "es" "fd" "rg"))
+                                          "gm" "magick" "7z" "es" "fd" "rg" "xargs" "ls"))
                                   '(utf-8-auto . chinese-gbk-dos))))
   (progn ; `path'
     (when def:win-p

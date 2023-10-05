@@ -8,18 +8,18 @@
 ;;; dired
 (use-package dired
   :init
-  (defvar dired:externally-file-ext-regex (rx bos
-                                              (or (and "do" (or ?c ?t) (? ?x))
-                                                  (and "ppt" (? ?x))
-                                                  "pdf"
-                                                  "mp4"
-                                                  "dwg"
-                                                  "dxf"
-                                                  "DXF"
-                                                  "xlsx"
-                                                  )
-                                              eos)
-    )
+  (defvar dired:externally-file-ext-regex
+    (rx bos
+        (or (and "do" (or ?c ?t) (? ?x))
+            (and "ppt" (? ?x))
+            "pdf"
+            "mp4"
+            "dwg"
+            "dxf"
+            "DXF"
+            "xlsx"
+            )
+        eos))
   :bind
   (:map dired-mode-map
         ("," . dired-create-empty-file)
@@ -49,8 +49,8 @@
   :custom
   (dired-hide-details-hide-symlink-targets nil)
   :config
-  (setq dired-listing-switches
-        "-l --almost-all --human-readable --group-directories-first --no-group"
+  (setq ls-lisp-dirs-first t)
+  (setq dired-listing-switches "-lAhG --group-directories-first"
         dired-recursive-deletes 'always
         dired-recursive-copies 'always
         ;;        dired-kill-when-opening-new-dired-buffer t
@@ -134,20 +134,20 @@
   ;; History of fd-args values entered in the minibuffer.
   (defvar dired:fd-args-history nil)
   
-  (defvar dired:fd-dired-fd-pre-args
+  (defconst dired:fd-dired-fd-pre-args
     (concat " --color never"
             (if def:win-p
                 (concat " --path-separator "
                         (shell-quote-argument "/")))
             " "))
   
-  (defvar dired:fd-dired-rg-pre-args
+  (defconst dired:fd-dired-rg-pre-args
     (concat " --color never"
             " --files-with-matches"
             " -0"
             " --regexp"
             " "))
-  
+  :config
   (defun dired:fd-dired (dir args)
     "Run `fd' and go into Dired mode on a buffer of the output.
 The default command run is
@@ -170,10 +170,10 @@ fd ARGS -l
   (defun dired:fd-dired-dwim (args)
     "Run `fd' and go into Dired mode on a buffer of the output in `default-directory'."
     (interactive (list
-                  (read-string "Run fd (with args): " fd-args
-                               (if fd-args
-                                   '(fd-args-history . 1)
-                                 'fd-args-history))))
+                  (read-string "Run fd (with args): " dired:fd-args
+                               (if dired:fd-args
+                                   '(dired:fd-args-history . 1)
+                                 'dired:fd-args-history))))
     (dired:fd-dired default-directory args))
 
   (defun dired:fd-name-dired (dir pattern)
@@ -190,7 +190,7 @@ fd -g PATTERN -l
   (defun dired:fd-rg-dired (dir regexp)
     "Find files in DIR that contain matches for REGEXP and Dired on output.
 The default command run is
-fd -X rg --regexp REGEXP -l
+fd -X rg -l0 --regexp REGEXP | xargs -0 ls
 ."
     (interactive "DFd-rg (directory): \nsFd-rg (rg regexp): ")
     (find-dired-with-command dir
@@ -204,9 +204,16 @@ fd -X rg --regexp REGEXP -l
                                      " "
                                      "|"
                                      " "
-                                     "xargs -0 ls -dilsb")))
+                                     "xargs -0"
+                                     " "
+                                     "ls"
+                                     " "
+                                     (cdr find-ls-option))))
   :bind
-  ("M-s d" . dired:fd-dired)
+  (("M-s d" . dired:fd-dired)
+   :map dired-mode-map
+   ("r" . dired:fd-dired-dwim))
+  :commands dired:fd-rg-dired
   :custom
   (find-ls-option find-ls-option-default-ls))
 
