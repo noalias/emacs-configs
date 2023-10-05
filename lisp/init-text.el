@@ -124,5 +124,15 @@ depend on it being positive instead of the entry in `TeX-command-list'."
   (when (fboundp 'turn-on-cdlatex)
     (add-hook 'org-mode-hook #'org-cdlatex-mode)))
 
+(use-package denote
+  :hook (dired-mode-hook . denote-dired-mode)
+  :bind
+  ("C-c d" . denote-command)
+  :config
+  (define-keymap
+    :prefix 'denote-command
+    "d" #'denote-create-note
+    ))
+
 (provide 'init-text)
 ;;; init-text.el ends here
