@@ -123,15 +123,41 @@ depend on it being positive instead of the entry in `TeX-command-list'."
   (when (fboundp 'turn-on-cdlatex)
     (add-hook 'org-mode-hook #'org-cdlatex-mode)))
 
-(use-package denote
-  :hook (dired-mode-hook . denote-dired-mode)
+(use-package org-capture
   :bind
-  ("C-c d" . denote-command)
-  :config
-  (define-keymap
-    :prefix 'denote-command
+  ("C-c c" . org-capture))
+
+(use-package denote
+  :init
+  (defvar denote:collection-directory (expand-file-name "~/Reference/"))
+  (defvar-keymap denote:command-map
     "d" #'denote-create-note
-    ))
+    "r" #'denote-rename-file)
+  (fset 'denote:command-map denote:command-map)
+  :hook ((dired-mode-hook . denote-dired-mode)
+         (after-init-hook . denote-modules-global-mode))
+  :bind
+  ("C-c d" . denote:command-map)
+  :custom
+  (denote-directory "~/notes/")
+  :config
+  (setq denote-known-keywords
+        (append '("std" "book" "program")
+                denote-known-keywords)))
+
+(use-package denote-collection
+  :bind (
+         :map denote:command-map
+         ("c" . denote-collect-file)
+         :map dired:command-map
+         ("c" . denote-dired-collect-file)))
+
+(use-package ebib :defer)
+
+(use-package ebib-notes
+  :autoload ebib-notes-create-org-template
+  :custom
+  (ebib-notes-use-org-capture "e"))
 
 (provide 'init-text)
 ;;; init-text.el ends here
