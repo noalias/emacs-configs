@@ -47,7 +47,7 @@
 
 (defun denote-collection-get-file (file keywords &optional date)
   (interactive
-   (let* ((file (read-file-name "Rename file Denote-style: "
+   (let* ((file (read-file-name "Collect Denote-style file: "
                                 nil nil t))
           (file-type (denote-filetype-heuristics file)))
      (list
@@ -63,14 +63,14 @@
 
 (defun denote-collection-dired-get-file (&optional arg)
   (interactive "P" 'dired-mode)
-  (dired-map-over-marks
-   (let ((file (dired-get-file-for-visit))
-         (keywords (denote-keywords-prompt)))
-     (if-let ((name (denote-collection-get-file file keywords)))
-         (unless (and (file-directory-p file)
-                      (file-exists-p name))
-           (dired-rename-file file name))))
-   arg)
+  (let ((keywords (denote-keywords-prompt)))
+    (dired-map-over-marks
+     (let ((file (dired-get-file-for-visit)))
+       (if-let ((name (denote-collection-get-file file keywords)))
+           (unless (and (file-directory-p file)
+                        (file-exists-p name))
+             (dired-rename-file file name))))
+     arg))
   (revert-buffer))
 
 (defalias 'denote-dired-collect-file 'denote-collection-dired-get-file)
