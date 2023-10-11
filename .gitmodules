@@ -48,6 +48,10 @@
 [submodule "doom-themes"]
 	path = lib/doom-themes
 	url = https://github.com/doomemacs/themes
+[submodule "ebib"]
+	path = lib/ebib
+	url = https://github.com/joostkremers/ebib
+	info-path = .
 [submodule "edit-indirect"]
 	path = lib/edit-indirect
 	url = https://github.com/Fanael/edit-indirect
@@ -70,6 +74,9 @@
 [submodule "git-modes"]
 	path = lib/git-modes
 	url = https://github.com/magit/git-modes
+[submodule "hl-todo"]
+	path = lib/hl-todo
+	url = https://github.com/tarsius/hl-todo
 [submodule "llama"]
 	path = lib/llama
 	url = https://git.sr.ht/~tarsius/llama
@@ -103,6 +110,9 @@
 [submodule "orderless"]
 	path = lib/orderless
 	url = https://github.com/emacsmirror/orderless
+[submodule "parsebib"]
+	path = lib/parsebib
+	url = https://github.com/joostkremers/parsebib
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
