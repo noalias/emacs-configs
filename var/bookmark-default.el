@@ -2,18 +2,30 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Pictures"
+(("Reference"
+ (filename . "~/Reference/")
+ (front-context-string . "  d:/noalias/Ref")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25891 34365 397389 0))
+("Screenshots"
+ (filename . "~/Pictures/Screenshots/")
+ (front-context-string . "  d:/noalias/Pic")
+ (rear-context-string)
+ (position . 1)
+ (last-modified 25888 46846 205067 0))
+("Pictures"
  (filename . "~/Pictures/")
  (front-context-string . "  d:/noalias/Pic")
  (rear-context-string)
  (position . 1)
  (last-modified 25875 42726 53513 0))
 ("note"
- (filename . "~/study/note/")
+ (filename . "~/notes/")
  (front-context-string . "  d:/noalias/stu")
  (rear-context-string)
  (position . 1)
- (last-modified 25874 57032 436949 0))
+ (last-modified 25891 19391 276393 0))
 ("Family"
  (filename . "d:/Family/")
  (front-context-string . "  d:/Family:\n  d")
@@ -62,12 +74,6 @@
  (rear-context-string)
  (position . 1)
  (last-modified 25844 33551 602001 0))
-("books"
- (filename . "~/study/books/")
- (front-context-string . "  d:/noalias/stu")
- (rear-context-string)
- (position . 1)
- (last-modified 25840 20944 498590 0))
 ("standard"
  (filename . "~/study/standard/")
  (front-context-string . "  d:/noalias/stu")
