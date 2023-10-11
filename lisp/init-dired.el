@@ -20,32 +20,38 @@
             "xlsx"
             )
         eos))
-  :bind
-  (:map dired-mode-map
-        ("," . dired-create-empty-file)
-        ;; 折叠子目录
-        ("TAB" . dired-hide-subdir)
-        ("C-k" . dired-kill-subdir)
-        ("M-p" . dired-prev-subdir)
-        ("M-n" . dired-next-subdir)
-        ;; `f' 进入目录或文件
-        ;; `b' 返回上级目录
-        ("b" . dired-up-directory)
-        ("e" . dired:find-file-externally)
-        ("E" . dired-toggle-read-only)
-        ("/ u" . dired-upcase)
-        ("/ l" . dired-downcase)
-        ("/ d" . dired-flag-files-regexp)
-        ("/ g" . dired-mark-files-containing-regexp)
-        ("/ m" . dired-mark-files-regexp)
-        ("/ r" . dired-do-rename-regexp)
-        ("/ C" . dired-do-copy-regexp)
-        ("/ H" . dired-do-hardlink-regexp)
-        ("/ R" . dired-do-rename-regexp)
-        ("/ S" . dired-do-symlink-regexp)
-        ("/ Y" . dired-do-relsymlink-regexp)
-        ("/ &" . dired-flag-garbage-files)
-        ("SPC" . dired:utilities))
+
+  (defvar-keymap dired:command-map
+    "p" #'dired:convert-image-to-pdf
+    "i" #'dired:convert-pdf-to-image
+    "m" #'dired:merge-pdf-files)
+  (fset 'dired:command-map dired:command-map)
+  :bind (
+         :map dired-mode-map
+         ("," . dired-create-empty-file)
+         ;; 折叠子目录
+         ("TAB" . dired-hide-subdir)
+         ("C-k" . dired-kill-subdir)
+         ("M-p" . dired-prev-subdir)
+         ("M-n" . dired-next-subdir)
+         ;; `f' 进入目录或文件
+         ;; `b' 返回上级目录
+         ("b" . dired-up-directory)
+         ("e" . dired:find-file-externally)
+         ("E" . dired-toggle-read-only)
+         ("/ u" . dired-upcase)
+         ("/ l" . dired-downcase)
+         ("/ d" . dired-flag-files-regexp)
+         ("/ g" . dired-mark-files-containing-regexp)
+         ("/ m" . dired-mark-files-regexp)
+         ("/ r" . dired-do-rename-regexp)
+         ("/ C" . dired-do-copy-regexp)
+         ("/ H" . dired-do-hardlink-regexp)
+         ("/ R" . dired-do-rename-regexp)
+         ("/ S" . dired-do-symlink-regexp)
+         ("/ Y" . dired-do-relsymlink-regexp)
+         ("/ &" . dired-flag-garbage-files)
+         ("SPC" . dired:command-map))
   :custom
   (dired-hide-details-hide-symlink-targets nil)
   :config
@@ -55,12 +61,6 @@
         dired-recursive-copies 'always
         ;;        dired-kill-when-opening-new-dired-buffer t
         )
-
-  (define-keymap 
-    :prefix 'dired:utilities
-    "p" #'dired:convert-image-to-pdf
-    "i" #'dired:convert-pdf-to-image
-    "m" #'dired:merge-pdf-files)
 
   (add-hook 'dired-mode-hook #'dired-hide-details-mode)
 

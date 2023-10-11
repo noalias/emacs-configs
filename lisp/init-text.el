@@ -7,7 +7,7 @@
   :mode ("README\\.md\\'" . gfm-mode))
 
 (use-package latex
-  :mode ("\\.tex\\'" . LaTex-mode)
+  :mode ("\\.tex\\'" . latex-mode)
   :hook
   ((LaTeX-mode-hook . LaTeX-math-mode)
    (LaTeX-mode-hook . turn-on-reftex)
@@ -105,8 +105,7 @@ depend on it being positive instead of the entry in `TeX-command-list'."
 
 (use-package org
   :bind
-  (("C-c c" . org-capture)
-   ("C-c a" . org-agenda))
+  ("C-c a" . org-agenda)
   :custom
   (org-startup-truncated t)
   :config

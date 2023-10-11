@@ -23,11 +23,11 @@
 ;; 
 
 ;;; Code:
-;;;; VARS
+;;; VARS
 (defconst def:win-p (eq system-type 'windows-nt))
 (defconst def:linux-p (eq system-type 'gnu/linux))
 
-;;;; FUNCTIONS
+;;; FUNCTIONS
 (defun def:expand-scoop-bin-file-name (app &optional subdir)
   (or subdir (setq subdir ""))
   (when-let (dir (getenv "SCOOP"))
