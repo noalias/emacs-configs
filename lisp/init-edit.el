@@ -62,4 +62,7 @@
 (use-package aggressive-indent
   :hook (after-init-hook . global-aggressive-indent-mode))
 
+(use-package hl-todo
+  :hook (after-init-hook . global-hl-todo-mode))
+
 (provide 'init-edit)
