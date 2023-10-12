@@ -3,7 +3,7 @@
   :bind
   (
    :map minibuffer-local-completion-map
-   ("M-i" . minibuffer:insert-bookmark)
+   ("M-i" . bookmark-insert-location)
    ("C-n" . minibuffer-next-completion)
    ("C-p" . minibuffer-previous-completion)
    ("C-RET" . completion:force-exit)
@@ -69,20 +69,6 @@ if that doesn't produce a completion match."
                   (car args))
           (cdr args)))
   (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
-
-  (defun minibuffer:insert-bookmark (bookmark)
-    (interactive
-     (list (let ((enable-recursive-minibuffers t))
-             (when (not (featurep 'bookmark))
-               (require 'bookmark))
-             (bookmark-completing-read "Insert bookmark"
-				                       bookmark-current-bookmark))))
-    (unless bookmark
-      (user-error "No bookmark specified"))
-    (when (minibufferp)
-      (bookmark-maybe-historicize-string bookmark)
-      (delete-minibuffer-contents)
-      (insert (bookmark-get-filename bookmark))))
   )
 
 (use-package orderless
@@ -94,7 +80,7 @@ if that doesn't produce a completion match."
 (use-package vertico
   :hook after-init-hook
   :bind (:map vertico-map
-              ("M-i" . minibuffer:insert-bookmark)))
+              ("M-i" . bookmark-insert-location)))
 
 (use-package vertico-directory
   :after vertico
