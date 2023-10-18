@@ -15,7 +15,8 @@
   (fset 'file:command-map file:command-map)
   :hook (after-init-hook . recentf-mode)
   :bind
-  ("C-c f" . file:command-map)
+  (("C-c f" . file:command-map)
+   ("C-c b" . bookmark-map))
   :custom
   (recentf-exclude `(,no-littering-var-directory
                      ,no-littering-etc-directory

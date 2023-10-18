@@ -65,10 +65,17 @@
 (load-theme 'modus-vivendi)
 
 ;;;; Tail
+(if-let* ((dir (concat (file-name-parent-directory user-emacs-directory)
+                       "lib"))
+          ((file-exists-p dir)))
+    (dolist (dir (directory-files dir :full))
+      (if (file-directory-p dir)
+          (add-to-list 'load-path dir))))
+
 (ignore-errors
   (load (expand-file-name "experiment.el" user-emacs-directory)
-	:noerror
-	:nomessage))
+	    :noerror
+	    :nomessage))
 
 (provide 'init)
 ;;; init.el ends here

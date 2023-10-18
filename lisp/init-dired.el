@@ -128,9 +128,11 @@
                                                "7z x -aoa -o%o %i")))
 
 (use-package fd-dired
-  :bind (("M-s d" . fd-dired)
-         :map dired-mode-map
-         ("r" . fd-dired-dwim)))
+  :bind ("M-s d" . fd-dired)
+  :commands fd-dired-dwim
+  :config
+  (with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "r") #'fd-dired-dwim)))
 
 (use-package diredfl
   :hook dired-mode-hook

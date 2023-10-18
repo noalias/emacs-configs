@@ -6,8 +6,6 @@
   :init
   (setq epkg-database-connector
         (if (>= emacs-major-version 29) 'sqlite-builtin 'sqlite-module)))
-;; Icons
-(use-package nerd-icons)
 
 (use-package emacs
   :demand t
@@ -66,8 +64,7 @@
     (global-unset-key (kbd "C-x C-k"))
     (global-unset-key (kbd "C-h C-f"))
     (global-unset-key (kbd "C-x C-p"))
-    (global-unset-key (kbd "C-h C-a"))
-    (global-unset-key (kbd "M-i")))
+    (global-unset-key (kbd "C-h C-a")))
 
   (progn ; `misc'
     (fset 'yes-or-no-p 'y-or-n-p)

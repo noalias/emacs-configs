@@ -74,12 +74,6 @@
  (rear-context-string)
  (position . 1)
  (last-modified 25844 33551 602001 0))
-("standard"
- (filename . "~/study/standard/")
- (front-context-string . "  d:/noalias/stu")
- (rear-context-string)
- (position . 1)
- (last-modified 25835 62965 91479 0))
 ("Desktop"
  (filename . "~/Desktop/")
  (front-context-string . "  d:/noalias/Des")

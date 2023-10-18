@@ -1,6 +1,14 @@
 ;;;  -*- lexical-binding: t -*-
 (use-package emacs
   :init
+  (defvar-keymap mark:command-map
+    "s" #'mark-sexp
+    "w" #'mark-word
+    "b" #'mark-whole-buffer
+    "f" #'mark-defun)
+  (fset 'mark:command-map mark:command-map)
+  :bind
+  ("C-x m" . mark:command-map)
   :config
   (add-hook 'after-init-hook #'global-hl-line-mode)
   (add-hook 'after-init-hook #'electric-pair-mode)

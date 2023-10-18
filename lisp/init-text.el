@@ -131,7 +131,7 @@ depend on it being positive instead of the entry in `TeX-command-list'."
   :init
   (defvar denote:collection-directory (expand-file-name "~/Reference/"))
   (defvar-keymap denote:command-map
-    "d" #'denote-create-note
+    "d" #'denote-open-or-create
     "r" #'denote-rename-file)
   (fset 'denote:command-map denote:command-map)
   :hook ((dired-mode-hook . denote-dired-mode)
