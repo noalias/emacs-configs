@@ -155,3 +155,6 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "csv-mode"]
+	path = lib/csv-mode
+	url = https://github.com/emacsmirror/csv-mode
