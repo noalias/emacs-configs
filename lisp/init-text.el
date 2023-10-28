@@ -3,6 +3,20 @@
   :init
   (setq-default major-mode 'text-mode))
 
+(use-package csv-mode
+  :if def:win-p
+  :mode "\\.ptd\\'"
+  :config
+  (add-hook 'csv-mode-hook
+            (lambda ()
+              (when (string-match-p "\\.ptd\\'" (buffer-file-name))
+                (csv-set-comment-start "!")
+                (csv-set-separator (string-to-char " "))))))
+
+(use-package conf-mode
+  :if def:win-p
+  :mode ("\\.pro\\'" . conf-space-mode))
+
 (use-package markdown-mode
   :mode ("README\\.md\\'" . gfm-mode))
 
