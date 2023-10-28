@@ -11,7 +11,7 @@
         (? ?*)
         (or
          "Messages"
-         "Output"
+         (seq (or ?O ?o) "utput")
          "Compile-Log"
          "Completions"
          "Flymake log"
@@ -47,6 +47,7 @@
         (* anything)
         (? ?*)
         eos))
+  (defvar buffer:skip-mode '(Tex-Output-mode))
   :config
   (setq switch-to-prev-buffer-skip-regexp buffer:skip-regexp)
   (advice-add 'read-buffer-to-switch :around #'buffer:skip-read-buffer-to-switch)
@@ -54,8 +55,12 @@
     ;; 避免 `other-buffer' 选取需要忽略的buffer
     (set-frame-parameter nil 'buffer-list
                          (seq-filter (lambda (buffer)
-                                       (string-match-p buffer:skip-regexp
-                                                       (buffer-name buffer)))
+                                       (buffer-match-p
+                                        (or (list buffer:skip-regexp
+                                                  (and (mapcar
+                                                        (lambda (item) (cons 'major-mode item))
+                                                        buffer:skip-mode))))
+                                        buffer))
                                      (frame-parameter nil 'buffer-list)))
 
     (minibuffer-with-setup-hook
@@ -66,7 +71,6 @@
                         (not (string-match-p buffer:skip-regexp
                                              (if (consp name) (car name) name))))))
       (apply fn args)))
-  
   )
 
 (use-package ibuffer
