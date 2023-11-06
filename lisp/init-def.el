@@ -26,6 +26,7 @@
 ;;; VARS
 (defconst def:win-p (eq system-type 'windows-nt))
 (defconst def:linux-p (eq system-type 'gnu/linux))
+(defconst def:pdf-program (if def:win-p "SumatraPDF"))
 
 ;;; FUNCTIONS
 (defun def:expand-scoop-bin-file-name (app &optional subdir)

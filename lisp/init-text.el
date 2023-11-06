@@ -41,7 +41,7 @@
   (TeX-save-query nil)
   (TeX-electric-math '("$" . "$"))
   ;; view by SumatraPDF
-  (TeX-view-program-selection '((output-pdf "SumatraPDF")))
+  (TeX-view-program-selection `((output-pdf ,def:pdf-program)))
   ;; Control if server should be started for inverse search.
   (TeX-source-correlate-start-server t)
   ;; Style
