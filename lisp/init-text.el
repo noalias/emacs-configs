@@ -153,20 +153,38 @@ depend on it being positive instead of the entry in `TeX-command-list'."
   :bind
   ("C-c d" . denote:command-map)
   :custom
-  (denote-directory "~/notes/")
+  (denote-directory "~/notes/"))
+
+(use-package bibtex
+  :defer
   :config
-  (setq denote-known-keywords
-        (append '("std" "book" "program")
-                denote-known-keywords)))
+  (add-to-list 'bibtex-biblatex-entry-alist
+               '("Standard" "Standards Information of Chinese"
+                 (("author")
+                  ("title")
+                  ("date" nil nil 1)
+                  ("year" nil nil -1))
+                 nil
+                 (("number")
+                  ("organization")
+                  ("publisher")
+                  ("status")
+                  ("url")
+                  ("language")))))
 
-(use-package denote-collection
-  :bind (
-         :map denote:command-map
-         ("c" . denote-collect-file)
-         :map dired:command-map
-         ("c" . denote-dired-collect-file)))
-
-(use-package ebib :defer)
+(use-package ebib
+  :bind
+  ("C-c e" . ebib)
+  :custom
+  (ebib-preload-bib-files '("~/Reference/index.bib"))
+  (ebib-bibtex-dialect 'biblatex)
+  (ebib-default-directory "~/Reference/")
+  :config
+  (setf (alist-get "pdf" ebib-file-associations
+                   nil
+                   :remove
+                   'string=)
+        def:pdf-program))
 
 (use-package ebib-notes
   :autoload ebib-notes-create-org-template
