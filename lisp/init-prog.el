@@ -103,9 +103,7 @@
       "Passes through required openscad-lsp initialization options."
       (list :search_paths ""
             :fmt_style "file"
-            :default_param t))
-    )
-  )
+            :default_param t))))
 
 ;;;; `other'
 (provide 'init-prog)

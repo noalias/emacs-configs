@@ -143,7 +143,6 @@ depend on it being positive instead of the entry in `TeX-command-list'."
 
 (use-package denote
   :init
-  (defvar denote:collection-directory (expand-file-name "~/Reference/"))
   (defvar-keymap denote:command-map
     "d" #'denote-open-or-create
     "r" #'denote-rename-file)
@@ -174,17 +173,40 @@ depend on it being positive instead of the entry in `TeX-command-list'."
 
 (use-package ebib
   :bind
-  ("C-c e" . ebib)
+  (("C-c e" . ebib)
+   :map ebib-index-mode-map
+   ("C-x i" . ebib-import-file))
   :custom
-  (ebib-preload-bib-files '("~/Reference/index.bib"))
   (ebib-bibtex-dialect 'biblatex)
   (ebib-default-directory "~/Reference/")
+  (ebib-file-search-dirs '("~/Reference/"))
+  (ebib-preload-bib-files '("~/Reference/index.bib"))
+  (ebib-notes-directory "~/notes/")
+  (ebib-name-transform-function 'ebib-name-transform)
+  (ebib-file-associations (list (cons "pdf" def:pdf-program)))
+  (ebib-index-columns '(("Title" 50 t)
+                        ("Year" 6 t)
+                        ("Author/Editor" 45 t)))
   :config
-  (setf (alist-get "pdf" ebib-file-associations
-                   nil
-                   :remove
-                   'string=)
-        def:pdf-program))
+  (defun ebib-name-transform (key)
+    (or
+     (pcase (ebib-db-get-field-value "=type=" key ebib--cur-db :noerror)
+       ("Standard" (when-let* ((num (ebib-unbrace
+                                     (ebib-db-get-field-value "number" key ebib--cur-db :noerror)))
+                               (title (ebib-unbrace
+                                       (ebib-db-get-field-value "title" key ebib--cur-db :noerror)))
+                               (num-1 (if (string-match (rx (group (= 2 nonl))
+                                                            "/T"
+                                                            (* space)
+                                                            (group (+ nonl)))
+                                                        num)
+                                          (concat (match-string 1 num)
+                                                  "[T] "
+                                                  (match-string 2 num))
+                                        num)))
+                     (format "%s %s" num-1 title)))
+       ("Book" (ebib-unbrace (ebib-db-get-field-value "title" key ebib--cur-db :noerror))))
+     (identity key))))
 
 (use-package ebib-notes
   :autoload ebib-notes-create-org-template

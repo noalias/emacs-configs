@@ -12,7 +12,7 @@
   :hook (after-init-hook . savehist-mode)
   :custom
   (custom-file (no-littering-expand-etc-file-name "custom.el"))
-  (server-auth-dir (no-littering-expand-var-file-name "server"))
+  ;;; (server-auth-dir (no-littering-expand-var-file-name "server"))
   :config
   (when (file-exists-p custom-file)
     (load custom-file))
@@ -71,6 +71,8 @@
     (setq visible-bell t
           ring-bell-function 'ignore)
     (setq-default cursor-type 'bar))
+
+  (server-start)
   )
 
 (provide 'init-base)

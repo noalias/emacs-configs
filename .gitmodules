@@ -7,7 +7,6 @@
 [submodule "auctex"]
 	path = lib/auctex
 	url = https://github.com/emacs-straight/auctex.git
-	no-makeinfo = doc
 	info-path = .
 [submodule "auto-compile"]
 	path = lib/auto-compile

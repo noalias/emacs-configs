@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Reference"
+(("Config"
+ (filename . "~/.config/")
+ (front-context-string . ".\n  drwxrwxrwx  ")
+ (rear-context-string . "4k Nov 19 11:31 ")
+ (position . 116)
+ (last-modified 25957 37476 921947 0))
+("Reference"
  (filename . "~/Reference/")
  (front-context-string . "  d:/noalias/Ref")
  (rear-context-string)
@@ -45,11 +51,11 @@
  (position . 1)
  (last-modified 25857 32031 285853 0))
 ("downloads"
- (filename . "d:/downloads/")
+ (filename . "~/Downloads/")
  (front-context-string . "  d:/downloads:\n")
  (rear-context-string)
  (position . 1)
- (last-modified 25855 65026 990822 0))
+ (last-modified 25946 46263 768698 0))
 ("Temp"
  (filename . "c:/Users/noalias/AppData/Local/Temp/")
  (front-context-string . "  c:/Users/noali")
