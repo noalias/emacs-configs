@@ -121,10 +121,6 @@
 [submodule "rime"]
 	path = lib/rime
 	url = https://github.com/DogLooksGood/emacs-rime
-[submodule "rime-ice"]
-	path = etc/rime/rime-ice
-	url = https://github.com/iDvel/rime-ice.git
-	disabled = true	
 [submodule "s"]
 	path = lib/s
 	url = https://github.com/emacsmirror/s
