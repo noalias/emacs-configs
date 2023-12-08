@@ -11,9 +11,6 @@
 (use-package git-modes
   :defer)
 
-;;;; `rg'
-(use-package rg
-  :bind
-  ("M-s r" . rg-menu))
+
 
 (provide 'init-tools)

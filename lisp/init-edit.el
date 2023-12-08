@@ -51,16 +51,14 @@
   (("C-'" . avy-goto-char)
    ("M-'" . avy-goto-char-2)
    ("C-," . avy-goto-word-crt-line)
-   ("M-g w" . avy-goto-word-1)
-   ("M-g e" . avy-goto-word-0)
-   ("M-g g" . avy-goto-line))
+   ("M-g w" . avy-goto-word-1))
   :config
   (setq avy-background t)
   (defun avy-goto-word-crt-line ()
     "Jump to a word start on the current line only."
     (interactive)
     (avy-with avy-goto-word-1
-      (avy-goto-word-0 nil (line-beginning-position) (line-end-position))))
+              (avy-goto-word-0 nil (line-beginning-position) (line-end-position))))
   (with-eval-after-load 'view
     (define-keymap
       :keymap view-mode-map
