@@ -24,7 +24,7 @@
   :config
   (add-hook 'prog-mode-hook #'global-prettify-symbols-mode)
   (add-hook 'prog-mode-hook #'flymake-mode)
-  (add-hook 'prog-mode-hook #'eldoc-mode)
+  ;;(add-hook 'prog-mode-hook #'eldoc-mode)
   
   (defun prog:indent-spaces-mode ()
     (setq indent-tabs-mode nil)))
@@ -49,6 +49,10 @@
   (compilation-ask-about-save nil)
   :config
   (define-key cargo-mode-map (kbd "C-c") 'cargo-minor-mode-command-map))
+
+;; ;;;; `typescript-ts-mode'
+;; (use-package deno-ts-mode
+;;   :defer t)
 
 ;;;; `typescript-ts-mode'
 (use-package typescript-ts-mode
@@ -76,21 +80,25 @@
 (use-package eglot
   :hook
   ((rust-ts-mode-hook . eglot-ensure)
+   (deno-ts-mode-hook . eglot-ensure)
+   (deno-tsx-ts-mode-hook . eglot-ensure)
    (typescript-ts-mode-hook . eglot-ensure)
    (js-ts-mode-hook . eglot-ensure)
-   (scad-mode-hook . eglot-ensure))
+   (scad-mode-hook . eglot-ensure)
+   )
   :config
-  (progn ;; `deno'
+  (progn ;; `deno-lsp'
     (add-to-list 'eglot-server-programs
-                 '((js-ts-mode typescript-ts-mode) . (eglot-deno "deno" "lsp")))
+                 '((js-ts-mode js-tsx-ts-mode typescript-ts-mode typescript-tsx-ts-mode) . (eglot-deno "deno" "lsp")))
 
     (defclass eglot-deno (eglot-lsp-server) ()
       :documentation "A custom class for deno lsp.")
 
     (cl-defmethod eglot-initialization-options ((server eglot-deno))
-      "Passes through required deno initialization options."
-      (list :enable t
-            :lint t)))
+      "Passes through required deno initialization options"
+      (list :deno.enable t
+            :deno.lint t
+            :deno.suggest.completeFunctionCalls t)))
   
   (progn ;; `openscad-lsp'
     (add-to-list 'eglot-server-programs
@@ -104,6 +112,13 @@
       (list :search_paths ""
             :fmt_style "file"
             :default_param t))))
+
+;;;;
+(use-package eldoc-box
+  :custom
+  (eldoc-box-offset '(20 20 16))
+  :config
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-at-point-mode t))
 
 ;;;; `other'
 (provide 'init-prog)

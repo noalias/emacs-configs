@@ -63,6 +63,12 @@
 [submodule "edit-indirect"]
 	path = lib/edit-indirect
 	url = https://github.com/Fanael/edit-indirect
+[submodule "eglot"]
+	path = lib/eglot
+	url = https://github.com/emacs-straight/eglot.git
+[submodule "eldoc-box"]
+	path = lib/eldoc-box
+	url = https://github.com/casouri/eldoc-box
 [submodule "elisp-demos"]
 	path = lib/elisp-demos
 	url = https://github.com/xuchunyang/elisp-demos
@@ -159,6 +165,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
-[submodule "csv-mode"]
-	path = lib/csv-mode
-	url = https://github.com/emacsmirror/csv-mode
