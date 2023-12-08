@@ -51,6 +51,7 @@
   :config
   (use-package init-tools)
   (use-package init-completion)
+  (use-package init-navigation)
   (use-package init-buffer)
   (use-package init-dired)
   (use-package init-image)

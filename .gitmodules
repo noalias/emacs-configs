@@ -32,9 +32,18 @@
 [submodule "compat"]
 	path = lib/compat
 	url = https://git.sr.ht/~pkal/compat
+[submodule "consult"]
+	path = lib/consult
+	url = https://github.com/minad/consult
+[submodule "csv-mode"]
+	path = lib/csv-mode
+	url = https://github.com/emacsmirror/csv-mode
 [submodule "dash"]
 	path = lib/dash
 	url = https://github.com/emacsmirror/dash
+[submodule "deno-ts-mode"]
+	path = lib/deno-ts-mode
+	url = https://github.com/noalias/deno-ts-mode.git
 [submodule "denote"]
 	path = lib/denote
 	url = https://github.com/emacsmirror/denote

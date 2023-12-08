@@ -46,32 +46,7 @@
          )
         (* anything)
         (? ?*)
-        eos))
-  (defvar buffer:skip-mode '(Tex-Output-mode))
-  :config
-  (setq switch-to-prev-buffer-skip-regexp buffer:skip-regexp)
-  (advice-add 'read-buffer-to-switch :around #'buffer:skip-read-buffer-to-switch)
-  (defun buffer:skip-read-buffer-to-switch (fn &rest args)
-    ;; 避免 `other-buffer' 选取需要忽略的buffer
-    (set-frame-parameter nil 'buffer-list
-                         (seq-filter (lambda (buffer)
-                                       (buffer-match-p
-                                        (or (list buffer:skip-regexp
-                                                  (and (mapcar
-                                                        (lambda (item) (cons 'major-mode item))
-                                                        buffer:skip-mode))))
-                                        buffer))
-                                     (frame-parameter nil 'buffer-list)))
-
-    (minibuffer-with-setup-hook
-        (lambda ()
-          ;; 将需要忽略的buffer从 `minibuffer-completion-table' 中过滤
-          (setq-local minibuffer-completion-predicate
-                      (lambda (name)
-                        (not (string-match-p buffer:skip-regexp
-                                             (if (consp name) (car name) name))))))
-      (apply fn args)))
-  )
+        eos)))
 
 (use-package ibuffer
   :bind
