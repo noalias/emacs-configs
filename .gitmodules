@@ -41,9 +41,6 @@
 [submodule "dash"]
 	path = lib/dash
 	url = https://github.com/emacsmirror/dash
-[submodule "deno-ts-mode"]
-	path = lib/deno-ts-mode
-	url = https://github.com/noalias/deno-ts-mode.git
 [submodule "denote"]
 	path = lib/denote
 	url = https://github.com/emacsmirror/denote
@@ -56,6 +53,9 @@
 [submodule "doom-themes"]
 	path = lib/doom-themes
 	url = https://github.com/doomemacs/themes
+[submodule "eat"]
+	path = lib/eat
+	url = https://codeberg.org/akib/emacs-eat
 [submodule "ebib"]
 	path = lib/ebib
 	url = https://github.com/joostkremers/ebib
@@ -91,6 +91,15 @@
 [submodule "hl-todo"]
 	path = lib/hl-todo
 	url = https://github.com/tarsius/hl-todo
+[submodule "julia-mode"]
+	path = lib/julia-mode
+	url = https://github.com/JuliaEditorSupport/julia-emacs
+[submodule "julia-snail"]
+	path = lib/julia-snail
+	url = https://github.com/gcv/julia-snail
+[submodule "julia-ts-mode"]
+	path = lib/julia-ts-mode
+	url = https://github.com/ronisbr/julia-ts-mode
 [submodule "llama"]
 	path = lib/llama
 	url = https://git.sr.ht/~tarsius/llama
@@ -127,6 +136,12 @@
 [submodule "parsebib"]
 	path = lib/parsebib
 	url = https://github.com/joostkremers/parsebib
+[submodule "parsec"]
+	path = lib/parsec
+	url = https://github.com/cute-jumper/parsec.el
+[submodule "popup"]
+	path = lib/popup
+	url = https://github.com/auto-complete/popup-el
 [submodule "posframe"]
 	path = lib/posframe
 	url = https://github.com/emacsmirror/posframe
@@ -145,6 +160,9 @@
 [submodule "shrink-path"]
 	path = lib/shrink-path
 	url = https://gitlab.com/bennya/shrink-path.el
+[submodule "spinner"]
+	path = lib/spinner
+	url = https://github.com/Malabarba/spinner.el
 [submodule "tabspaces"]
 	path = lib/tabspaces
 	url = https://github.com/mclear-tools/tabspaces

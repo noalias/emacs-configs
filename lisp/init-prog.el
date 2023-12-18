@@ -50,9 +50,21 @@
   :config
   (define-key cargo-mode-map (kbd "C-c") 'cargo-minor-mode-command-map))
 
-;; ;;;; `typescript-ts-mode'
-;; (use-package deno-ts-mode
-;;   :defer t)
+;;;; `julia-mode'
+(use-package julia-ts-mode
+  :mode "\\.jl$"
+  :custom
+  (julia-ts-align-argument-list-to-first-sibling t)
+  (julia-ts-align-assignment-expressions-to-first-sibling t)
+  (julia-ts-align-parameter-list-to-first-sibling t)
+  (julia-ts-align-curly-brace-expressions-to-first-sibling t)
+  (julia-ts-align-type-parameter-list-to-first-sibling t))
+
+(use-package julia-snail
+  :custom
+  (julia-snail-terminal-type :eat)
+  :hook
+  (julia-ts-mode . julia-snail-mode))
 
 ;;;; `typescript-ts-mode'
 (use-package typescript-ts-mode
@@ -80,16 +92,13 @@
 (use-package eglot
   :hook
   ((rust-ts-mode-hook . eglot-ensure)
-   (deno-ts-mode-hook . eglot-ensure)
-   (deno-tsx-ts-mode-hook . eglot-ensure)
    (typescript-ts-mode-hook . eglot-ensure)
    (js-ts-mode-hook . eglot-ensure)
-   (scad-mode-hook . eglot-ensure)
-   )
+   (scad-mode-hook . eglot-ensure))
   :config
   (progn ;; `deno-lsp'
     (add-to-list 'eglot-server-programs
-                 '((js-ts-mode js-tsx-ts-mode typescript-ts-mode typescript-tsx-ts-mode) . (eglot-deno "deno" "lsp")))
+                 '((typescript-ts-mode typescript-tsx-ts-mode) . (eglot-deno "deno" "lsp")))
 
     (defclass eglot-deno (eglot-lsp-server) ()
       :documentation "A custom class for deno lsp.")
@@ -113,12 +122,14 @@
             :fmt_style "file"
             :default_param t))))
 
-;;;;
+;;;; `eldoc'
 (use-package eldoc-box
   :custom
   (eldoc-box-offset '(20 20 16))
+  (eldoc-box-only-multi-line t)
   :config
-  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-at-point-mode t))
+  (add-hook 'eglot-managed-mode-hook #'eldoc-box-hover-mode t)
+  )
 
 ;;;; `other'
 (provide 'init-prog)
