@@ -99,6 +99,47 @@
   ;; Configure other variables and modes in the :config section,
   ;; after lazily loading the package.
   :config
+  (setq consult-buffer-filter
+        (rx bos
+            (? ?*)
+            (or
+             "Messages"
+             (seq (or ?O ?o) "utput")
+             "Compile-Log"
+             "Completions"
+             "Flymake log"
+             "Warnings"
+             "Flymake diagnostics"
+             "Async Shell Command"
+             "Async-native-compile-log"
+             "Native-compile-Log"
+             "Apropos"
+             "Backtrace"
+             "prodigy"
+             "Calendar"
+             "Finder"
+             "Kill Ring"
+             "eshell"
+             "epc con"
+             "shell"
+             "terminal"
+             "vterm"
+             "quickrun"
+             "elfeed-entry"
+             "macro expansion"
+             "Agenda Commands"
+             "Org Select"
+             "Capture"
+             "CAPTURE-"
+             "prolog"
+             "rustfmt"
+             "Disabled Command"
+             "magit-process: "
+             "magit-diff: "
+             )
+            (* anything)
+            (? ?*)
+            eos))
 
   ;; Optionally configure preview. The default value
   ;; is 'any, such that any key triggers the preview.
@@ -109,8 +150,9 @@
   ;; :preview-key on a per-command basis using the `consult-customize' macro.
   (consult-customize
    consult-theme :preview-key '(:debounce 0.2 any)
+   consult-bookmark :preview-key "M-."
    consult-ripgrep consult-git-grep consult-grep
-   consult-bookmark consult-recent-file consult-xref
+   consult-recent-file consult-xref
    consult--source-bookmark consult--source-file-register
    consult--source-recent-file consult--source-project-recent-file
    ;; :preview-key "M-."

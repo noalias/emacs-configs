@@ -8,15 +8,13 @@
         auto-save-delete-trailing-whitespace t
         delete-auto-save-files t)
   (defvar-keymap file:command-map
-    "l" #'recentf
     "r" #'rename-file
     "c" #'copy-file
     "k" #'delete-file)
   (fset 'file:command-map file:command-map)
   :hook (after-init-hook . recentf-mode)
   :bind
-  (("C-c f" . file:command-map)
-   ("C-c b" . bookmark-map))
+  ("C-c f" . file:command-map)
   :custom
   (recentf-exclude `(,no-littering-var-directory
                      ,no-littering-etc-directory

@@ -3,6 +3,9 @@
   :init
   (setq-default major-mode 'text-mode))
 
+(use-package git-modes
+  :defer)
+
 (use-package csv-mode
   :if def:win-p
   :mode "\\.ptd\\'"

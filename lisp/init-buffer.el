@@ -4,49 +4,7 @@
   :bind
   (("C-x K" . kill-buffer-and-window)
    ("C-x x p" . switch-to-prev-buffer)
-   ("C-x x n" . switch-to-next-buffer))
-  :init
-  (defvar buffer:skip-regexp
-    (rx bos
-        (? ?*)
-        (or
-         "Messages"
-         (seq (or ?O ?o) "utput")
-         "Compile-Log"
-         "Completions"
-         "Flymake log"
-         "Warnings"
-         "Flymake diagnostics"
-         "Async Shell Command"
-         "Async-native-compile-log"
-         "Native-compile-Log"
-         "Apropos"
-         "Backtrace"
-         "prodigy"
-         "Calendar"
-         "Finder"
-         "Kill Ring"
-         "eshell"
-         "epc con"
-         "shell"
-         "terminal"
-         "vterm"
-         "quickrun"
-         "elfeed-entry"
-         "macro expansion"
-         "Agenda Commands"
-         "Org Select"
-         "Capture"
-         "CAPTURE-"
-         "prolog"
-         "rustfmt"
-         "Disabled Command"
-         "magit-process: "
-         "magit-diff: "
-         )
-        (* anything)
-        (? ?*)
-        eos)))
+   ("C-x x n" . switch-to-next-buffer)))
 
 (use-package ibuffer
   :bind
