@@ -31,7 +31,7 @@
 	url = https://github.com/emacsmirror/company
 [submodule "compat"]
 	path = lib/compat
-	url = https://git.sr.ht/~pkal/compat
+	url = https://github.com/emacsmirror/compat
 [submodule "consult"]
 	path = lib/consult
 	url = https://github.com/minad/consult
