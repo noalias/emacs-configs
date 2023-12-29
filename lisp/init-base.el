@@ -72,7 +72,7 @@
           ring-bell-function 'ignore)
     (setq-default cursor-type 'bar))
 
-  (server-start)
+  (server-mode)
   )
 
 (provide 'init-base)

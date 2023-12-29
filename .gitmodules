@@ -7,7 +7,6 @@
 [submodule "auctex"]
 	path = lib/auctex
 	url = https://github.com/emacs-straight/auctex.git
-	info-path = .
 [submodule "auto-compile"]
 	path = lib/auto-compile
 	url = https://github.com/emacscollective/auto-compile
@@ -59,7 +58,6 @@
 [submodule "ebib"]
 	path = lib/ebib
 	url = https://github.com/joostkremers/ebib
-	info-path = .
 [submodule "edit-indirect"]
 	path = lib/edit-indirect
 	url = https://github.com/Fanael/edit-indirect
@@ -183,3 +181,9 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = https://github.com/joaotavora/yasnippet
+[submodule "rime-ice"]
+	path = etc/rime/rime-ice
+	url = https://github.com/iDvel/rime-ice.git
+	disabledd = ture	
+	
+	

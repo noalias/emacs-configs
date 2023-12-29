@@ -8,7 +8,7 @@
    ("M-j" . rime-force-enable)
    )
   :init
-  (setq rime-user-data-dir "~/.config/rime-ice/")
+  (setq rime-user-data-dir (no-littering-expand-etc-file-name "rime/rime-ice/"))
   (let* ((name "default.custom.yaml")
          (file (expand-file-name name (no-littering-expand-etc-file-name "rime")))
          (target (expand-file-name name rime-user-data-dir)))
@@ -20,7 +20,7 @@
   (rime-cursor "|")
   ;; 与`rime-cursor'互斥 
   (rime-show-preedit 'inline)
-  ;; (rime-title "✍️")️
+  ;; (rime-title "✍️")
   (rime-inline-ascii-trigger 'shift-r)
   (rime-show-candidate 'minibuffer) ;; Options `message' `minibuffer' `posframe'
   (rime-posframe-properties (list :background-color "#333333"

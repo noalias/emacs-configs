@@ -11,7 +11,6 @@
 (use-package eat
   :defer
   :custom
-  (explicit-shell-file-name (executable-find "sh"))
   (eat-kill-buffer-on-exit t)
   :config
   (delete [?\C-u] eat-semi-char-non-bound-keys) ; make C-u work in Eat terminals like in normal terminals

@@ -42,6 +42,10 @@
   (setq auto-compile-toggle-deletes-nonlib-dest   t)
   (setq auto-compile-update-autoloads             t))
 
+(use-package server
+  :commands (server-running-p)
+  :config (or (server-running-p) (server-mode)))
+
 ;;; Long tail
 (use-package emacs
   :load-path ("lisp" "site-lisp")
