@@ -58,9 +58,6 @@
 [submodule "edit-indirect"]
 	path = lib/edit-indirect
 	url = https://github.com/Fanael/edit-indirect
-[submodule "eglot"]
-	path = lib/eglot
-	url = https://github.com/emacs-straight/eglot.git
 [submodule "eldoc-box"]
 	path = lib/eldoc-box
 	url = https://github.com/casouri/eldoc-box
